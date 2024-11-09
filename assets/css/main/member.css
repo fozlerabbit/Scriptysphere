@@ -45,8 +45,8 @@
 .card {
   position: relative;
   width: 220px;
-  height: 320px;
-  background-color: mediumturquoise;
+  height: 330px;
+  background-color: rgb(101 202 84 / 25%);
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
