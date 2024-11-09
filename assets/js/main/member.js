@@ -4,12 +4,14 @@ document.getElementById('searchInput').addEventListener('input', function () {
 
     cards.forEach(card => {
         const name = card.querySelector('.card_title').textContent.toLowerCase();
-        if (name.includes(filter)) {
+        const memberId = card.querySelector('.member_id').textContent.toLowerCase();
+
+        if (name.includes(filter) || memberId.includes(filter)) {
             card.style.display = 'block';
-            document.getElementById('nothing').style.display='none'
+            document.getElementById('nothing').style.display = 'none';
         } else {
             card.style.display = 'none';
-            document.getElementById('nothing').style.display='block'
+            document.getElementById('nothing').style.display = 'block';
         }
     });
 });
