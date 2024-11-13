@@ -33,7 +33,7 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 0fr));
   gap: 20px;
   padding: 20px;
- 
+ justify-content: center;
 
 
 }
@@ -66,7 +66,8 @@
   justify-content: center;
   transition: opacity 0.5s;
   backface-visibility: hidden;
-  gap: 10px;
+
+
 }
  .back-content {
   position: absolute;
