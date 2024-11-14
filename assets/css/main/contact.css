@@ -87,19 +87,23 @@
     outline: none;
   }
   
-  .submit-btn {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    background-color: #034366;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
+
   .submit-btn:hover {
     background-color: #007BFF;
   }
   
+
+  @media screen and (max-width: 720px) {
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-info, .contact-form {
+      padding: 20px;
+      width: 100%;
+    }
+    .form{
+      margin-left: -37px;
+    width: 300px;
+    }
+  }
