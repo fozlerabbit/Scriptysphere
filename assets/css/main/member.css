@@ -105,6 +105,7 @@
 
 #searchInput {
   width: 100%;
+  border:2px solid rgb(224, 222, 222) ;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 16px;
