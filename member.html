@@ -79,28 +79,27 @@
 
 
  <!-- card centent  -->
-  <div class="card-container ">
-    
-<!-- Search Input & Button -->
+ 
+   <div class="container">
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search by name or ID...">
+            <select id="skillFilter">
+                <option value="">All Skills</option>
+            </select>
+        </div>
+        
+        <div id="messageContainer"></div>
+        <div id="cardSection" class="card-grid"></div>
+        
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+            <p>Loading Members...</p>
+        </div>
+    </div>
 
 
-<section class="member-grid">
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search by name or ID">
-    <button id="searchButton">Search</button>
-</div>
-<div id="message-container" style="display: none;">
-    <h1 id="nothing">No matching results found</h1>
-</div>
 
 
-      
-      <div id="card-section"></div>
-      
-      
-      
-    </section>
-  </div>
   <footer id="footer-placeholder"></footer>
   <script src="https://kit.fontawesome.com/d4dfaca71a.js" crossorigin="anonymous"></script>
   <script src="assets/js/main/additional.js"></script>

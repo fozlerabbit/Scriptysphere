@@ -1,105 +1,185 @@
-document.getElementById('searchInput').addEventListener('input', function () {
-    const filter = this.value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.card-container');
-    let hasResults = false;
+const API_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLh7fC4tEvpVso48xfINmMzrotSmbLEwBiIg0zSFqaErJ2uKJCKrfsaupHtKvtmTvRL4wR-fkzy8ycja-J2U6Rv2rnBKHU8ZIVaKRJGL3R31Q9nPGUiWp3BAkcf3hkGLmDHYf2fKbQzqaIA5yg2hMSjLkuAjRDcRMsvDqqBqMkJDEFJPXF3ZJcQt6tKUIDUaXLqlPx-MqUs1Lwh0mM6iwQLDNL7rXsJgoZdS8O0dQpqFHCllPT0FVUpS4Cwle4wuTeJGqPlmsSHrgKdAhoXbMVespoRJzg&lib=MddHsRbk_0E1-tyaBozepfl_55EKapUNo';
 
-    cards.forEach(card => {
-        const name = card.querySelector('.name').textContent.toLowerCase();
-        const memberId = card.querySelector('.code').textContent.toLowerCase();
+// Configuration
+const DEFAULT_PHOTO = 'https://raw.githubusercontent.com/sinan544/profile/refs/heads/main/logo.png';
+let membersData = [];
 
-        if (name.includes(filter) || memberId.includes(filter)) {
-            card.style.display = 'block';
-            hasResults = true;
-        } else {
-            card.style.display = 'none';
-        }
-    });
+// DOM Elements
+const dom = {
+  searchInput: document.getElementById('searchInput'),
+  skillFilter: document.getElementById('skillFilter'),
+  cardSection: document.getElementById('cardSection'),
+  messageContainer: document.getElementById('messageContainer'),
+  loader: document.getElementById('loader')
+};
 
-    const messageContainer = document.getElementById('message-container'); // Corrected ID
-    if (filter === '') {
-        messageContainer.style.display = 'none'; // Hide when input is empty
-        cards.forEach(card => card.style.display = 'block'); // Show all cards
-    } else if (hasResults) {
-        messageContainer.style.display = 'none';
-    } else {
-        messageContainer.style.display = 'block';
-    }
+// Initialize Application
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    showLoading(true);
+    await loadMembers();
+    setupEventListeners();
+  } catch (error) {
+    showError(`Initialization failed: ${error.message}`);
+  } finally {
+    showLoading(false);
+  }
 });
 
+// Core Functions
+async function loadMembers() {
+  try {
+    const response = await fetch(API_URL);
+    validateResponse(response);
+    membersData = await response.json();
+    renderCards(membersData);
+    populateSkillFilter();
+  } catch (error) {
+    throw new Error(`Failed to load members: ${error.message}`);
+  }
+}
 
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('https://raw.githubusercontent.com/sinan544/profile/refs/heads/main/profile.json')
-            .then(response => response.json())
-            .then(jsonData => {
-                const container = document.getElementById("card-section");
+function renderCards(members) {
+  dom.cardSection.innerHTML = members.map(member => createCardHTML(member)).join('');
+  initCardInteractions();
+}
 
-                // Create a container div for better layout
-                const cardsContainer = document.createElement('div');
-                cardsContainer.style.display = 'flex';
-                cardsContainer.style.justifyContent = 'center';
-                cardsContainer.style.flexWrap = 'wrap';
-                cardsContainer.style.gap = '20px';
-                cardsContainer.style.padding = '20px';
-                container.appendChild(cardsContainer);
+function createCardHTML(member) {
+  const emailPrefix = member.email?.split('@')[0].toUpperCase() || 'SSM';
+  const facebookUrl = member.facebook?.startsWith('http') ? member.facebook : `https://facebook.com/${member.facebook}`;
+  
+  return `
+    <div class="card-container">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="${optimizeImageUrl(member.photo)}" 
+               class="profile-img" 
+               alt="${member.name}"
+               loading="lazy"
+               onerror="this.src='${DEFAULT_PHOTO}'">
+          <h2 style="text-align:center;">${member.name}</h2>
+          <p class="role" style="text-align:center;">${member.skills}</p>
+          <p class="member-id">${emailPrefix}</p>
+        </div>
+        <div class="card-back">
+          <div class="bio">
+            <h3>About Me</h3>
+            <p>${member.about || 'No bio available'}</p>
+          </div>
+          <div class="contact-info">
+            ${member.phone ? `<p><i class="fas fa-phone"></i> ${formatBangladeshiPhone(member.phone)}</p>` : ''}
+            ${member.email ? `<p><i class="fas fa-envelope"></i> ${member.email}</p>` : ''}
+          </div>
+          <div class="social-links">
+            ${member.facebook ? `
+            <a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>` : ''}
+            ${member.email ? `
+            <a href="mailto:${member.email}" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>` : ''}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
-                jsonData.forEach(person => {
-                    const card = document.createElement('div');
-                    card.className = 'card-container';
-                    card.style.margin = '10px';
+// Bangladeshi Phone Number Formatter
+function formatBangladeshiPhone(phone) {
+  // Remove all non-digit characters
+  const cleaned = phone.replace(/\D/g, '');
+  
+  // Check for valid Bangladeshi numbers
+  if (cleaned.startsWith('880') && cleaned.length === 13) {
+    // Format: +880 XX XXXX XXXX
+    return `+${cleaned.slice(0, 3)} ${cleaned.slice(3, 5)} ${cleaned.slice(5, 9)} ${cleaned.slice(9)}`;
+  }
+  
+  if (cleaned.startsWith('0') && cleaned.length === 11) {
+    // Convert local format to international
+    const intlFormat = `880${cleaned.slice(1)}`;
+    return `+${intlFormat.slice(0, 3)} ${intlFormat.slice(3, 5)} ${intlFormat.slice(5, 9)} ${intlFormat.slice(9)}`;
+  }
+  
+  // Return original if unknown format
+  return phone;
+}
 
-                    // Handle Google Drive image links
-                    const formalPhoto = person['Your Formal Photo'] ? 
-                        person['Your Formal Photo'].replace('open?id=', 'uc?export=view&id=') :
-                        'https://via.placeholder.com/150';
+// Rest of the helper functions remain the same
+function optimizeImageUrl(url) {
+  if (!url.includes('google.com')) return url;
+  return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=300&h=300&fit=cover`;
+}
 
-                    card.innerHTML = `
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <img src="${formalPhoto}" 
-                                     alt="${person['Full Name (For Certificate)']}" 
-                                     class="profile-img">
-                                <h2 class="name">${person['Full Name (For Certificate)']?.trim() || 'No Name'}</h2>
-                                <p class="role">${(person['Which Work Are You Interested on']?.split(',')[0] || 'Member').trim()}</p>
-                                <p class="code">ID: ${(person['Email Address ']?.split('@')[0] || 'MEM000').toUpperCase()}</p>
-                            </div>
-
-                            <div class="card-back">
-                                <div>
-                                    <h3 class="name">About Me</h3>
-                                    <p class="bio">${person['Tell us about yourself ?'] || 'No bio available'}</p>
-                                </div>
-                                
-                                <div class="contact-info">
-                                    ${person['  Phone Number   '] ? `<p><i class="fas fa-phone"></i> ${person['  Phone Number   ']}</p>` : ''}
-                                    ${person['Email Address '] ? `<p><i class="fas fa-envelope"></i> ${person['Email Address ']}</p>` : ''}
-                                    ${person['  Address (For Membership Card Delivery)'] ? `<p><i class="fas fa-map-marker-alt"></i> ${person['  Address (For Membership Card Delivery)']}</p>` : ''}
-                                </div>
-
-                                <div class="social-links">
-                                    ${person['Facebook Id (Link)'] ? `
-                                        <a href="${person['Facebook Id (Link)']}" class="facebook" target="_blank">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>` : ''}
-                                    
-                                    ${person['Email Address '] ? `
-                                        <a href="mailto:${person['Email Address ']}" class="email">
-                                            <i class="fas fa-envelope"></i>
-                                        </a>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
-                    // Add click handler for flipping
-                    card.onclick = function() {
-                        this.classList.toggle('flipped');
-                    };
-
-                    cardsContainer.appendChild(card);
-                });
-            })
-            .catch(error => {
-                console.error('Error loading JSON data:', error);
-                document.body.innerHTML = `<p style="color: red">Error loading data: ${error.message}</p>`;
-            });
+function initCardInteractions() {
+  document.querySelectorAll('.card-container').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('a')) card.classList.toggle('flipped');
     });
+  });
+}
+
+// Filter/Search Functionality
+function setupEventListeners() {
+  dom.searchInput.addEventListener('input', debounce(() => filterCards(), 300));
+  dom.skillFilter.addEventListener('change', () => filterCards());
+}
+
+function populateSkillFilter() {
+  const skills = [...new Set(membersData.flatMap(m => 
+    m.skills?.split(',').map(s => s.trim()).filter(Boolean)
+  ))].sort();
+
+  dom.skillFilter.innerHTML = `
+    <option value="">All Skills</option>
+    ${skills.map(skill => `<option value="${skill.toLowerCase()}">${skill}</option>`).join('')}
+  `;
+}
+
+function filterCards() {
+  const searchTerm = dom.searchInput.value.toLowerCase();
+  const selectedSkill = dom.skillFilter.value.toLowerCase();
+
+  const filtered = membersData.filter(member => {
+    const nameMatch = member.name?.toLowerCase().includes(searchTerm);
+    const emailMatch = member.email?.toLowerCase().includes(searchTerm);
+    const skillMatch = !selectedSkill || member.skills?.toLowerCase().includes(selectedSkill);
+    
+    return (nameMatch || emailMatch) && skillMatch;
+  });
+
+  renderCards(filtered);
+  dom.messageContainer.textContent = filtered.length ? '' : 'No matching members found';
+}
+
+// Utility Functions
+function debounce(func, timeout = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), timeout);
+  };
+}
+
+function validateResponse(response) {
+  if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+  const contentType = response.headers.get('content-type');
+  if (!contentType?.includes('application/json')) {
+    throw new Error('Invalid API response format');
+  }
+}
+
+function showLoading(show) {
+  dom.loader.style.display = show ? 'block' : 'none';
+}
+
+function showError(message) {
+  dom.messageContainer.innerHTML = `
+    <div class="error-message">
+      <p>${message}</p>
+      <button onclick="window.location.reload()">Retry</button>
+    </div>
+  `;
+}
