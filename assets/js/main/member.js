@@ -31,7 +31,8 @@ async function loadMembers() {
   try {
     const response = await fetch(API_URL);
     validateResponse(response);
-    membersData = await response.json();
+    const json = await response.json();
+    membersData = json.data || []; // ✅ FIXED: extract array properly
     renderCards(membersData);
     populateSkillFilter();
   } catch (error) {
@@ -47,7 +48,7 @@ function renderCards(members) {
 function createCardHTML(member) {
   const emailPrefix = member.email?.split('@')[0].toUpperCase() || 'SSM';
   const facebookUrl = member.facebook?.startsWith('http') ? member.facebook : `https://facebook.com/${member.facebook}`;
-  
+
   return `
     <div class="card-container">
       <div class="card-inner">
@@ -58,7 +59,7 @@ function createCardHTML(member) {
                loading="lazy"
                onerror="this.src='${DEFAULT_PHOTO}'">
           <h2 style="text-align:center;">${member.name}</h2>
-          <p class="role" style="text-align:center;">${member.skills}</p>
+          <p class="role" style="text-align:center;">${member.skill || 'No Skill Listed'}</p>
           <p class="member-id">${emailPrefix}</p>
         </div>
         <div class="card-back">
@@ -72,13 +73,13 @@ function createCardHTML(member) {
           </div>
           <div class="social-links">
             ${member.facebook ? `
-            <a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">
-              <i class="fab fa-facebook"></i>
-            </a>` : ''}
+              <a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">
+                <i class="fab fa-facebook"></i>
+              </a>` : ''}
             ${member.email ? `
-            <a href="mailto:${member.email}" class="social-link">
-              <i class="fas fa-envelope"></i>
-            </a>` : ''}
+              <a href="mailto:${member.email}" class="social-link">
+                <i class="fas fa-envelope"></i>
+              </a>` : ''}
           </div>
         </div>
       </div>
@@ -88,31 +89,24 @@ function createCardHTML(member) {
 
 // Bangladeshi Phone Number Formatter
 function formatBangladeshiPhone(phone) {
-  // Remove all non-digit characters
   const cleaned = phone.replace(/\D/g, '');
-  
-  // Check for valid Bangladeshi numbers
   if (cleaned.startsWith('880') && cleaned.length === 13) {
-    // Format: +880 XX XXXX XXXX
     return `+${cleaned.slice(0, 3)} ${cleaned.slice(3, 5)} ${cleaned.slice(5, 9)} ${cleaned.slice(9)}`;
   }
-  
   if (cleaned.startsWith('0') && cleaned.length === 11) {
-    // Convert local format to international
     const intlFormat = `880${cleaned.slice(1)}`;
     return `+${intlFormat.slice(0, 3)} ${intlFormat.slice(3, 5)} ${intlFormat.slice(5, 9)} ${intlFormat.slice(9)}`;
   }
-  
-  // Return original if unknown format
   return phone;
 }
 
-// Rest of the helper functions remain the same
+// Image Optimizer
 function optimizeImageUrl(url) {
   if (!url.includes('google.com')) return url;
   return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=300&h=300&fit=cover`;
 }
 
+// Flip Interaction
 function initCardInteractions() {
   document.querySelectorAll('.card-container').forEach(card => {
     card.addEventListener('click', (e) => {
@@ -121,15 +115,16 @@ function initCardInteractions() {
   });
 }
 
-// Filter/Search Functionality
+// Event Setup
 function setupEventListeners() {
   dom.searchInput.addEventListener('input', debounce(() => filterCards(), 300));
   dom.skillFilter.addEventListener('change', () => filterCards());
 }
 
+// Populate Dropdown Filter
 function populateSkillFilter() {
-  const skills = [...new Set(membersData.flatMap(m => 
-    m.skills?.split(',').map(s => s.trim()).filter(Boolean)
+  const skills = [...new Set(membersData.flatMap(m =>
+    m.skill?.split(',').map(s => s.trim()).filter(Boolean)
   ))].sort();
 
   dom.skillFilter.innerHTML = `
@@ -138,6 +133,7 @@ function populateSkillFilter() {
   `;
 }
 
+// Filtering Cards
 function filterCards() {
   const searchTerm = dom.searchInput.value.toLowerCase();
   const selectedSkill = dom.skillFilter.value.toLowerCase();
@@ -145,8 +141,7 @@ function filterCards() {
   const filtered = membersData.filter(member => {
     const nameMatch = member.name?.toLowerCase().includes(searchTerm);
     const emailMatch = member.email?.toLowerCase().includes(searchTerm);
-    const skillMatch = !selectedSkill || member.skills?.toLowerCase().includes(selectedSkill);
-    
+    const skillMatch = !selectedSkill || member.skill?.toLowerCase().includes(selectedSkill);
     return (nameMatch || emailMatch) && skillMatch;
   });
 
@@ -172,7 +167,9 @@ function validateResponse(response) {
 }
 
 function showLoading(show) {
-  dom.loader.style.display = show ? 'block' : 'none';
+  if (dom.loader) {
+    dom.loader.style.display = show ? 'block' : 'none';
+  }
 }
 
 function showError(message) {
