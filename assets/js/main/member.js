@@ -1,4 +1,4 @@
-const API_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLj_CXB-U_nlQB2Lq5ZNRD1X75ngLH_SE7LcsEaz6b0femi_0glUWRqokNue_iKmgci0ILDEgO9BUY3Ftz6KqxLhb1XYT2uuTAPdOcM9Gymz6m9oCaTQk9d9Wj6RAt77_-4SoNUne2WG-f2iXrDSo4shfwR6Oyl5aml-yaWtnivuASKSEHqGiCgNcRY4hWZXC8L0eNeCWOFirL3Uy8i0GyH2qd7KenX9Kqg04jfgV6lp1OPfd9d-ePV6MZG3pKi5OT2mWz_RmDbKobdDnx8hgKpX_IiHhg&lib=MddHsRbk_0E1-tyaBozepfl_55EKapUNo';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwphz5L1804nvRdM2S_p-t_gglZ3z7ruLCgXwicwGMhQOZg6mCs7kEDSwTVrULN2G_M/exec';
 
 // Configuration
 const DEFAULT_PHOTO = 'https://raw.githubusercontent.com/sinan544/profile/refs/heads/main/logo.png';
