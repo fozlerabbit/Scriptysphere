@@ -1,19 +1,32 @@
-const API_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLh7fC4tEvpVso48xfINmMzrotSmbLEwBiIg0zSFqaErJ2uKJCKrfsaupHtKvtmTvRL4wR-fkzy8ycja-J2U6Rv2rnBKHU8ZIVaKRJGL3R31Q9nPGUiWp3BAkcf3hkGLmDHYf2fKbQzqaIA5yg2hMSjLkuAjRDcRMsvDqqBqMkJDEFJPXF3ZJcQt6tKUIDUaXLqlPx-MqUs1Lwh0mM6iwQLDNL7rXsJgoZdS8O0dQpqFHCllPT0FVUpS4Cwle4wuTeJGqPlmsSHrgKdAhoXbMVespoRJzg&lib=MddHsRbk_0E1-tyaBozepfl_55EKapUNo';
+// Updated full JavaScript with responsive cards and working filters
 
-// Configuration
+const API_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLh7v1OxIJELHE8bvZFVV1KH5Mo4gEkD_Z42fi8uaoE81ND75LJtFCA4x_poADt3kFRv6YxdnGenSZR2QjQnEKJ0VYYHMIzwMWIV5sl0qSzGpt7kpsGSgaHBtyI75WVXBQY3CqENWdr0yAijMrxZI_Uh5cB44RgktkhlUbkA-s9iD18zNUcxmehcYfWi7_2iyKLUmfc1UAZrRKwuBXCDXZ46foyCgLFDQpZbOUxQYwAo4L8BuBj-Jf2TQKzdyxyE-CoJQEJL0TMwE5F9O7kxR29GbJvWNQ&lib=MddHsRbk_0E1-tyaBozepfl_55EKapUNo';
+
 const DEFAULT_PHOTO = 'https://raw.githubusercontent.com/sinan544/profile/refs/heads/main/logo.png';
 let membersData = [];
 
-// DOM Elements
+const divisionDistrictMap = {
+  barishal: ["barishal", "barguna", "bhola", "jhalokathi", "patukhali", "pirojpur"],
+  chattogram: ["chattogram", "bandarban", "brahmanbaria", "chakaria", "cox's bazar", "comilla", "feni", "khagrachari", "lakshmipur", "noakhali", "rangamati"],
+  dhaka: ["dhaka", "faridpur", "gazipur", "gopalganj", "kishoreganj", "madaripur", "manikganj", "munshiganj", "narayanganj", "narsingdi", "rajbari", "shariatpur", "tangail"],
+  khulna: ["khulna", "bagerhat", "chuadanga", "jashore", "jhenaidah", "kushtia", "magura", "meherpur", "narail", "satkhira"],
+  rajshahi: ["rajshahi", "bogura", "chapainawabganj", "joypurhat", "naogaon", "natore", "pabna", "sirajganj"],
+  rangpur: ["rangpur", "dinajpur", "gaibandha", "kurigram", "lalmonirhat", "nilphamari", "panchagarh", "thakurgaon"],
+  sylhet: ["sylhet", "habiganj", "maulvibazar", "sunamganj"],
+  mymensingh: ["mymensingh", "netrokona", "sherpur", "jamalpur"]
+};
+
 const dom = {
   searchInput: document.getElementById('searchInput'),
   skillFilter: document.getElementById('skillFilter'),
+  divisionFilter: document.getElementById('divisionFilter'),
+  districtFilter: document.getElementById('districtFilter'),
+  dobFilter: document.getElementById('dobFilter'),
   cardSection: document.getElementById('cardSection'),
   messageContainer: document.getElementById('messageContainer'),
   loader: document.getElementById('loader')
 };
 
-// Initialize Application
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     showLoading(true);
@@ -26,14 +39,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Core Functions
 async function loadMembers() {
   try {
     const response = await fetch(API_URL);
     validateResponse(response);
-    membersData = await response.json();
+    const json = await response.json();
+    membersData = json.data || [];
     renderCards(membersData);
     populateSkillFilter();
+    populateDivisionFilter();
+    populateDOBFilter();
   } catch (error) {
     throw new Error(`Failed to load members: ${error.message}`);
   }
@@ -47,18 +62,17 @@ function renderCards(members) {
 function createCardHTML(member) {
   const emailPrefix = member.email?.split('@')[0].toUpperCase() || 'SSM';
   const facebookUrl = member.facebook?.startsWith('http') ? member.facebook : `https://facebook.com/${member.facebook}`;
-  
+
   return `
     <div class="card-container">
       <div class="card-inner">
         <div class="card-front">
-          <img src="${optimizeImageUrl(member.photo)}" 
-               class="profile-img" 
-               alt="${member.name}"
-               loading="lazy"
-               onerror="this.src='${DEFAULT_PHOTO}'">
+          <img src="${optimizeImageUrl(member.photo)}" class="profile-img" alt="${member.name}" loading="lazy" onerror="this.src='${DEFAULT_PHOTO}'">
           <h2 style="text-align:center;">${member.name}</h2>
-          <p class="role" style="text-align:center;">${member.skills}</p>
+          <p class="role">${member.skill || 'No Skill Listed'}</p>
+          <p class="role">${member.division || 'No Division'}</p>
+          <p class="role">${member.district || 'No District'}</p>
+          <p class="role">${member.dob || 'DOB not given'}</p>
           <p class="member-id">${emailPrefix}</p>
         </div>
         <div class="card-back">
@@ -71,14 +85,8 @@ function createCardHTML(member) {
             ${member.email ? `<p><i class="fas fa-envelope"></i> ${member.email}</p>` : ''}
           </div>
           <div class="social-links">
-            ${member.facebook ? `
-            <a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener">
-              <i class="fab fa-facebook"></i>
-            </a>` : ''}
-            ${member.email ? `
-            <a href="mailto:${member.email}" class="social-link">
-              <i class="fas fa-envelope"></i>
-            </a>` : ''}
+            ${member.facebook ? `<a href="${facebookUrl}" class="social-link" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>` : ''}
+            ${member.email ? `<a href="mailto:${member.email}" class="social-link"><i class="fas fa-envelope"></i></a>` : ''}
           </div>
         </div>
       </div>
@@ -86,31 +94,78 @@ function createCardHTML(member) {
   `;
 }
 
-// Bangladeshi Phone Number Formatter
-function formatBangladeshiPhone(phone) {
-  // Remove all non-digit characters
-  const cleaned = phone.replace(/\D/g, '');
-  
-  // Check for valid Bangladeshi numbers
-  if (cleaned.startsWith('880') && cleaned.length === 13) {
-    // Format: +880 XX XXXX XXXX
-    return `+${cleaned.slice(0, 3)} ${cleaned.slice(3, 5)} ${cleaned.slice(5, 9)} ${cleaned.slice(9)}`;
-  }
-  
-  if (cleaned.startsWith('0') && cleaned.length === 11) {
-    // Convert local format to international
-    const intlFormat = `880${cleaned.slice(1)}`;
-    return `+${intlFormat.slice(0, 3)} ${intlFormat.slice(3, 5)} ${intlFormat.slice(5, 9)} ${intlFormat.slice(9)}`;
-  }
-  
-  // Return original if unknown format
-  return phone;
+function setupEventListeners() {
+  dom.searchInput.addEventListener('input', debounce(() => filterCards(), 300));
+  dom.skillFilter.addEventListener('change', () => filterCards());
+  dom.divisionFilter.addEventListener('change', () => {
+    populateDistricts(dom.divisionFilter.value);
+    filterCards();
+  });
+  dom.districtFilter.addEventListener('change', () => filterCards());
+  dom.dobFilter.addEventListener('change', () => filterCards());
 }
 
-// Rest of the helper functions remain the same
+function filterCards() {
+  const searchTerm = dom.searchInput.value.toLowerCase();
+  const selectedSkill = dom.skillFilter.value.toLowerCase();
+  const selectedDivision = dom.divisionFilter.value.toLowerCase();
+  const selectedDistrict = dom.districtFilter.value.toLowerCase();
+  const selectedDOB = dom.dobFilter.value;
+
+  const filtered = membersData.filter(member => {
+    const nameMatch = member.name?.toLowerCase().includes(searchTerm);
+    const emailMatch = member.email?.toLowerCase().includes(searchTerm);
+    const skillMatch = !selectedSkill || member.skill?.toLowerCase().includes(selectedSkill);
+    const divisionMatch = !selectedDivision || member.division?.toLowerCase() === selectedDivision;
+    const districtMatch = !selectedDistrict || member.district?.toLowerCase() === selectedDistrict;
+    const dobMatch = !selectedDOB || member.dob === selectedDOB;
+
+    return (nameMatch || emailMatch) && skillMatch && divisionMatch && districtMatch && dobMatch;
+  });
+
+  renderCards(filtered);
+  dom.messageContainer.textContent = filtered.length ? '' : 'Be the first person from this place!';
+}
+
+function populateSkillFilter() {
+  const skills = [...new Set(membersData.flatMap(m => m.skill?.split(',').map(s => s.trim()).filter(Boolean)))].sort();
+  dom.skillFilter.innerHTML = `<option value="">All Skills</option>` +
+    skills.map(skill => `<option value="${skill.toLowerCase()}">${skill}</option>`).join('');
+}
+
+function populateDivisionFilter() {
+  const divisions = Object.keys(divisionDistrictMap);
+  dom.divisionFilter.innerHTML = `<option value="">All Divisions</option>` +
+    divisions.map(d => `<option value="${d}">${capitalize(d)}</option>`).join('');
+}
+
+function populateDistricts(selectedDivision) {
+  const districts = divisionDistrictMap[selectedDivision] || [];
+  dom.districtFilter.innerHTML = `<option value="">All Districts</option>` +
+    districts.map(d => `<option value="${d}">${capitalize(d)}</option>`).join('');
+}
+
+function populateDOBFilter() {
+  const dobs = [...new Set(membersData.map(m => m.dob).filter(Boolean))].sort();
+  dom.dobFilter.innerHTML = `<option value="">All DOBs</option>` +
+    dobs.map(dob => `<option value="${dob}">${dob}</option>`).join('');
+}
+
 function optimizeImageUrl(url) {
   if (!url.includes('google.com')) return url;
   return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=300&h=300&fit=cover`;
+}
+
+function formatBangladeshiPhone(phone) {
+  const cleaned = phone.replace(/\D/g, '');
+  if (cleaned.startsWith('880') && cleaned.length === 13) {
+    return `+${cleaned.slice(0, 3)} ${cleaned.slice(3, 5)} ${cleaned.slice(5, 9)} ${cleaned.slice(9)}`;
+  }
+  if (cleaned.startsWith('0') && cleaned.length === 11) {
+    const intlFormat = `880${cleaned.slice(1)}`;
+    return `+${intlFormat.slice(0, 3)} ${intlFormat.slice(3, 5)} ${intlFormat.slice(5, 9)} ${intlFormat.slice(9)}`;
+  }
+  return phone;
 }
 
 function initCardInteractions() {
@@ -121,40 +176,6 @@ function initCardInteractions() {
   });
 }
 
-// Filter/Search Functionality
-function setupEventListeners() {
-  dom.searchInput.addEventListener('input', debounce(() => filterCards(), 300));
-  dom.skillFilter.addEventListener('change', () => filterCards());
-}
-
-function populateSkillFilter() {
-  const skills = [...new Set(membersData.flatMap(m => 
-    m.skills?.split(',').map(s => s.trim()).filter(Boolean)
-  ))].sort();
-
-  dom.skillFilter.innerHTML = `
-    <option value="">All Skills</option>
-    ${skills.map(skill => `<option value="${skill.toLowerCase()}">${skill}</option>`).join('')}
-  `;
-}
-
-function filterCards() {
-  const searchTerm = dom.searchInput.value.toLowerCase();
-  const selectedSkill = dom.skillFilter.value.toLowerCase();
-
-  const filtered = membersData.filter(member => {
-    const nameMatch = member.name?.toLowerCase().includes(searchTerm);
-    const emailMatch = member.email?.toLowerCase().includes(searchTerm);
-    const skillMatch = !selectedSkill || member.skills?.toLowerCase().includes(selectedSkill);
-    
-    return (nameMatch || emailMatch) && skillMatch;
-  });
-
-  renderCards(filtered);
-  dom.messageContainer.textContent = filtered.length ? '' : 'No matching members found';
-}
-
-// Utility Functions
 function debounce(func, timeout = 300) {
   let timer;
   return (...args) => {
@@ -182,4 +203,8 @@ function showError(message) {
       <button onclick="window.location.reload()">Retry</button>
     </div>
   `;
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
