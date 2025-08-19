@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .portfolio {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .portfolio img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .portfolio h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .portfolio p {
+      margin: 5px 0;
+    }
+    .portfolio a {
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      background: #0077b5;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .portfolio a:hover {
+      background: #005983;
+    }
+  </style>
+</head>
+<body>
+  <div class="portfolio">
+    <img id="photo" src="https://via.placeholder.com/150" alt="User Photo" />
+    <h1 id="name">Loading...</h1>
+    <p id="about"></p>
+    <p><strong>Skills:</strong> <span id="skills"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Phone:</strong> <span id="phone"></span></p>
+    <a id="facebook" href="#" target="_blank">Facebook</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ১. সাবডোমেইন সঠিকভাবে ধরার কোড
+      const hostParts = window.location.hostname.split('.');
+      const subdomain = (hostParts.length > 2) 
+        ? hostParts[0].toLowerCase().replace(/\s/g, '') 
+        : null;
+
+      if (!subdomain) {
+        document.body.innerHTML = '<h2>No user subdomain found.</h2>';
+        return;
+      }
+
+      // ২. API URL ঠিকভাবে তৈরি করুন
+      const apiUrl = `https://script.google.com/macros/s/AKfycbzHx01ySnyShIvEh5VXucJWoN_r_UjSIk3F-lIZVLp1J9xBl79P7VJA7L6j4FhABNjv/exec?name=${subdomain}`;
+
+      console.log('Subdomain:', subdomain);
+      console.log('Fetching from:', apiUrl);
+
+      fetch(apiUrl)
+        .then(res => {
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        })
+        .then(json => {
+          console.log('Fetched JSON:', json);
+
+          if (json.data && json.data.length > 0) {
+            const user = json.data[0];
+            document.getElementById('name').textContent = user.name || '—';
+            document.getElementById('about').textContent = user.about || 'No bio available';
+            document.getElementById('skills').textContent = user.skill || 'No skills listed';
+            document.getElementById('email').textContent = user.email || 'No email';
+            document.getElementById('phone').textContent = user.phone || 'No phone';
+            document.getElementById('photo').src = user.photo || 'https://via.placeholder.com/150';
+
+            if (user.facebook) {
+              const fbLink = user.facebook.startsWith('http') ? user.facebook : `https://facebook.com/${user.facebook}`;
+              document.getElementById('facebook').href = fbLink;
+            } else {
+              document.getElementById('facebook').style.display = 'none';
+            }
+          } else {
+            document.body.innerHTML = `
+              <div class="portfolio">
+                <h2>User "<span style="color:#0077b5;">${subdomain}</span>" not found!</h2>
+                <p>Please <a href="https://scriptysphere.com/register" style="color:#0077b5">register here</a> first.</p>
+              </div>
+            `;
+          }
+        })
+        .catch(err => {
+          console.error('Fetch error:', err);
+          document.body.innerHTML = '<h2>Oops! Error loading profile. Try again later.</h2>';
+        });
+    });
+  </script>
+</body>
+</html>
