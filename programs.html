@@ -1,263 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Events Lists</title>
-  <meta name="description" content="ScriptySphere">
-  <meta name="keywords" content="ScriptySphere">
-  <meta name="google-adsense-account" content="ca-pub-6784982497175876">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Programs - ScriptySphere</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.1/three.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:root {
+  --primary: #1e40af;
+  --secondary: #0ea5e9;
+}
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-  <meta property="og:site_name" content="scriptysphere.org">
-  <meta property="og:title" content="scriptysphere">
-  <meta property="og:description"
-    content="ScriptySphere is your one-stop digital agency, offering expert services in Olympiad hosting, chess competitions, digital marketing, graphic design, and more. Elevate your brand with our innovative solutions!">
-  <meta property="og:image"
-    content="https://avatars.githubusercontent.com/u/123060177">
-  <meta property="og:type" content="website" />
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="300">
-  <meta property="og:image:height" content="300">
-  <meta property="og:url" content="https://www.scriptysphere.org">
-  <link rel="canonical" href="https://www.scriptysphere.org">
-  <meta name="description" content="ScriptySphere is your one-stop digital agency, offering expert services in Olympiad hosting, chess competitions, digital marketing, graphic design, and more. Elevate your brand with our innovative solutions!">
-  <meta name="keywords" content="digital agency, Olympiad hosting, chess competitions, digital marketing, graphic design, branding, social media marketing, content creation, SEO services, web development, marketing solutions, creative agency, business growth, advertising, ScriptySphere" >
+/* Responsive Typography */
+h1 { font-size: 2.5rem; line-height: 1.2; }
+h2 { font-size: 2rem; line-height: 1.3; }
+h3 { font-size: 1.5rem; line-height: 1.4; }
+
+@media (min-width: 640px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.75rem; }
+}
+
+@media (min-width: 1024px) {
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.5rem; }
+}
+
+/* Animation Styles */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-fade > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease-out;
+}
+
+.stagger-fade.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-fade.visible > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-fade.visible > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-fade.visible > *:nth-child(4) { transition-delay: 0.3s; }
+.stagger-fade.visible > *:nth-child(5) { transition-delay: 0.4s; }
+.stagger-fade.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .header-top { flex-wrap: wrap; gap: 1rem; }
+  .header-top > div { flex: 1 0 100%; }
+  .header-top .search-container { order: 3; }
+  .mobile-menu-btn { position: absolute; top: 1.25rem; right: 1rem; }
   
+  .programs-grid { grid-template-columns: 1fr; }
+  .program-filter { flex-wrap: wrap; gap: 0.5rem; }
+  .program-filter button { flex: 1; min-width: 120px; }
   
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   
-  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
-  <link href="assets/css/main/additonal.css" rel="stylesheet">
-  <link href="assets/css/main/event_card.css" rel="stylesheet">
+  .cta-buttons { flex-direction: column; gap: 0.75rem; }
+  .cta-buttons button { width: 100%; }
+}
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .programs-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
 
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+  background: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Program Gallery Styles */
+.program-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.program-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  background: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.75rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 12px;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.program-detail-header {
+  margin-bottom: 2rem;
+}
+
+.program-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  background: #f3f4f6;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.stat-item i {
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+</style>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1e40af',
+        secondary: '#0ea5e9'
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '4px',
+        DEFAULT: '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        '2xl': '24px',
+        '3xl': '32px',
+        'full': '9999px',
+        'button': '8px'
+      }
+    }
+  }
+}
+</script>
 </head>
+<body class="bg-white">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="w-full px-4 sm:px-6 py-4">
+    <div class="flex items-center justify-between header-top">
+      <div class="flex items-center space-x-4 sm:space-x-8">
+        <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
+        <nav class="hidden lg:flex space-x-4 sm:space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+          <a href="about.html" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+          <a href="programs.html" class="text-primary font-medium">Programs</a>
+          <a href="#" class="text-gray-700 hover:text-primary transition-colors font-medium">Resources</a>
+          <a href="blog.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Blog</a>
+          <a href="#" class="text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+        </nav>
+      </div>
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <div class="hidden md:block relative search-container">
+          <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm w-40 md:w-48">
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+            <i class="ri-search-line text-gray-400 text-sm"></i>
+          </div>
+        </div>
+        <select class="hidden sm:block border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary pr-8">
+          <option>EN</option>
+          <option>FR</option>
+          <option>ES</option>
+        </select>
+        <button class="hidden md:block btn btn-primary">Support Us</button>
+        <button class="lg:hidden mobile-menu-btn">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-menu-line text-xl"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary text-white py-2 overflow-hidden ticker-container">
+    <div class="news-ticker whitespace-nowrap text-sm">
+      <span class="mx-4 sm:mx-8">🌍 New partnership with Global Tech Initiative announced</span>
+      <span class="mx-4 sm:mx-8">📊 2024 Impact Report: 50+ countries reached</span>
+      <span class="mx-4 sm:mx-8">🚀 Innovation Summit 2025 registration now open</span>
+      <span class="mx-4 sm:mx-8">💡 Digital Skills Program reaches 1 million learners</span>
+    </div>
+  </div>
+</header>
 
-<body class="index-page">
+<main>
+  <!-- Hero Section -->
+  <section class="relative py-16 sm:py-20 bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center fade-in">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Our Programs</h1>
+        <p class="text-xl max-w-3xl mx-auto">
+          Explore the initiatives and projects that are driving technology innovation and creating positive impact worldwide.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  <!-- Programs Filter -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="program-filter">
+        <button class="filter-btn active" data-filter="all">All Programs</button>
+        <button class="filter-btn" data-filter="education">Education</button>
+        <button class="filter-btn" data-filter="sustainability">Sustainability</button>
+        <button class="filter-btn" data-filter="innovation">Innovation</button>
+        <button class="filter-btn" data-filter="community">Community</button>
+      </div>
+    </div>
+  </section>
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">ScriptySphere</h1>
-      </a>
+  <!-- Programs Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 programs-grid stagger-fade">
+        <!-- Program 1: Digital Literacy -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="education" data-program="digital-literacy">
+          <img src="https://readdy.ai/api/search-image?query=Digital%20literacy%20program%20in%20rural%20community%20with%20diverse%20participants&width=400&height=250&seq=program1&orientation=landscape" 
+               alt="Digital Literacy Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-primary/10 text-primary mr-3">Education</span>
+              <span>Ongoing</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Digital Literacy Initiative</h3>
+            <p class="text-gray-600 mb-4">
+              Empowering communities with essential digital skills through comprehensive training programs and resources.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="http://www.scriptysphere.org" >Home</a></li>
-          <li><a href="http://www.scriptysphere.org/about">About</a></li>
-          <li><a href="http://www.scriptysphere.org/services">Services</a></li>
-          <li><a href="http://www.scriptysphere.org/event" class="active">Events</a></li>
-          <li><a href="http://www.scriptysphere.org/member">Member</a></li>
-        
+        <!-- Program 2: Green Tech -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="sustainability" data-program="green-tech">
+          <img src="https://readdy.ai/api/search-image?query=Green%20technology%20solar%20panel%20installation%20in%20developing%20community&width=400&height=250&seq=program2&orientation=landscape" 
+               alt="Green Technology Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-green-100 text-green-800 mr-3">Sustainability</span>
+              <span>2023-2024</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Sustainable Technology Solutions</h3>
+            <p class="text-gray-600 mb-4">
+              Implementing eco-friendly technology solutions to address environmental challenges in vulnerable communities.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
 
-          <li class="dropdown"><a href="#"><span>Club</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Programming Club</a></li>
-              <li><a href="#">English Club</a></li>
-              <li><a href="#">Chess Club</a></li>
-              <li><a href="#">Sports Club</a></li>
-            </ul>
-          </li>
-          <li><a href="http://www.scriptysphere.org/join">Join-Us</a></li>
+        <!-- Program 3: Innovation Lab -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="innovation" data-program="innovation-lab">
+          <img src="https://readdy.ai/api/search-image?query=Technology%20innovation%20lab%20with%20young%20people%20creating%20solutions&width=400&height=250&seq=program3&orientation=landscape" 
+               alt="Innovation Lab Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-secondary/10 text-secondary mr-3">Innovation</span>
+              <span>Ongoing</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Innovation Labs Network</h3>
+            <p class="text-gray-600 mb-4">
+              Establishing technology hubs where innovators can develop solutions to local and global challenges.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 4: Women in Tech -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="community education" data-program="women-in-tech">
+          <img src="https://readdy.ai/api/search-image?query=Women%20in%20technology%20training%20program%20diverse%20participants&width=400&height=250&seq=program4&orientation=landscape" 
+               alt="Women in Tech Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-purple-100 text-purple-800 mr-3">Community</span>
+              <span>2022-2024</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Women in Technology Initiative</h3>
+            <p class="text-gray-600 mb-4">
+              Empowering women and girls through technology education, mentorship, and career development programs.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 5: Rural Connectivity -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="innovation community" data-program="rural-connectivity">
+          <img src="https://readdy.ai/api/search-image?query=Rural%20internet%20connectivity%20project%20installation&width=400&height=250&seq=program5&orientation=landscape" 
+               alt="Rural Connectivity Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-blue-100 text-blue-800 mr-3">Innovation</span>
+              <span>2023-2025</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Rural Connectivity Project</h3>
+            <p class="text-gray-600 mb-4">
+              Expanding internet access to remote communities to bridge the digital divide and create opportunities.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 6: Climate Tech -->
+        <div class="program-card bg-white rounded-xl overflow-hidden shadow-lg" data-category="sustainability innovation" data-program="climate-tech">
+          <img src="https://readdy.ai/api/search-image?query=Climate%20technology%20solutions%20for%20environmental%20monitoring&width=400&height=250&seq=program6&orientation=landscape" 
+               alt="Climate Tech Program" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span class="category-badge bg-green-100 text-green-800 mr-3">Sustainability</span>
+              <span>2024-2026</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Climate Technology Solutions</h3>
+            <p class="text-gray-600 mb-4">
+              Developing and deploying technology solutions to mitigate and adapt to climate change impacts.
+            </p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors view-program-btn">
+              View Program →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Program Impact</h2>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+          Measuring our success through the tangible difference we make in communities worldwide
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger-fade">
+        <div class="text-center">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">50+</div>
+          <div class="text-lg sm:text-xl font-semibold mb-2">Active Programs</div>
+          <p class="text-blue-100">Creating impact across six continents</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">1M+</div>
+          <div class="text-lg sm:text-xl font-semibold mb-2">Lives Impacted</div>
+          <p class="text-blue-100">Through education and technology access</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">75%</div>
+          <div class="text-lg sm:text-xl font-semibold mb-2">Program Success Rate</div>
+          <p class="text-blue-100">Exceeding projected outcomes</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">95%</div>
+          <div class="text-lg sm:text-xl font-semibold mb-2">Participant Satisfaction</div>
+          <p class="text-blue-100">Based on post-program surveys</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 sm:p-12 text-white text-center slide-up">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Support Our Programs</h2>
+        <p class="text-lg sm:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto">
+          Join us in creating lasting impact through technology innovation and education initiatives worldwide.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 cta-buttons">
+          <button class="btn bg-white text-primary hover:bg-gray-100">
+            Donate Now
+          </button>
+          <button class="btn border-2 border-white text-white hover:bg-white hover:text-primary">
+            Become a Partner
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Program Modal -->
+<div id="programModal" class="modal">
+  <div class="modal-content">
+    <button class="close-modal">
+      <i class="ri-close-line"></i>
+    </button>
+    
+    <div id="modalContent">
+      <!-- Content will be loaded dynamically -->
+    </div>
+  </div>
+</div>
+
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10 sm:mb-12">
+      <div>
+        <div class="font-['Pacifico'] text-2xl text-white mb-3 sm:mb-4">ScriptySphere</div>
+        <p class="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+          Advancing global technology innovation through education, partnerships, and sustainable solutions.
+        </p>
+        <div class="flex space-x-3 sm:space-x-4">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+            <i class="ri-twitter-line text-base sm:text-lg"></i>
+          </div>
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+            <i class="ri-linkedin-line text-base sm:text-lg"></i>
+          </div>
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+            <i class="ri-youtube-line text-base sm:text-lg"></i>
+          </div>
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+            <i class="ri-facebook-line text-base sm:text-lg"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold mb-3 sm:mb-4">Programs</h3>
+        <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+          <li><a href="#" class="hover:text-white transition-colors">Digital Innovation</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Education Technology</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Sustainable Tech</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Global Partnerships</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Research Initiatives</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-    </div>
-  </header>
-
-  <main id="main">
-
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to ScriptySphare</h1>
-    <p>Explore a world of innovation, competitions, and excellence. Join our events and make an impact!</p>
-    <a href="#event"><button>Explore Events</button></a>
-  </div>
-</section>
-<!-- / Hero Section -->
-
-
-<!-- about section -->
-<section class="about">
-  <div class="about-content">
-    <h2>Why Participate in Our Events?</h2>
-    <p>
-      Participating in our events and Olympiads is not just about competition; it's about learning, growing, and unlocking your full potential. Here's what you gain:
-    </p>
-    <div class="benefits">
-      <div class="benefit-item">
-        <div>
-          <i class="bi bi-people-fill icons" ></i>
-          <h3>Networking Opportunities</h3>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold mb-3 sm:mb-4">Resources</h3>
+        <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+          <li><a href="#" class="hover:text-white transition-colors">Annual Reports</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Research Papers</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Media Kit</a></li>
+          <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-semibold mb-3 sm:mb-4">Stay Connected</h3>
+        <p class="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">Subscribe to our newsletter for updates</p>
+        <div class="flex gap-2 mb-3 sm:mb-4">
+          <input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 sm:px-4 sm:py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white text-sm">
+          <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap text-sm">Subscribe</button>
         </div>
-        <p>Connect with like-minded individuals and build meaningful relationships for your future endeavors.</p>
-      </div>
-      <div class="benefit-item">
-        <i class="bi bi-graph-up-arrow "></i>
-        <h3>Skill Enhancement</h3>
-        <p>Participate in diverse challenges to improve your problem-solving, teamwork, and leadership skills.</p>
-      </div>
-      <div class="benefit-item">
-        <i class="bi bi-globe-americas "></i>
-        <h3>Global Recognition</h3>
-        <p>Stand out with certificates and awards that add value to your academic or professional journey.</p>
+        <div class="flex items-center space-x-3 text-sm text-gray-400">
+          <div class="flex items-center">
+            <div class="w-4 h-4 flex items-center justify-center mr-2">
+              <i class="ri-mail-line text-xs"></i>
+            </div>
+            <span>info@scriptysphere.org</span>
+          </div>
+        </div>
       </div>
     </div>
-    <a href="#event"><button>Join the Action</button></a>
+    
+    <div class="border-t border-gray-800 pt-6 sm:pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-xs sm:text-sm mb-3 md:mb-0">
+          © 2024 ScriptySphere. All rights reserved.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+          <div class="flex items-center space-x-2">
+            <div class="w-4 h-4 flex items-center justify-center">
+              <i class="ri-shield-check-line text-xs"></i>
+            </div>
+            <span>Secure Site</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
-<!-- / about section -->
+</footer>
 
-<!-- card container -->
-    <div class="" style="margin:50px ;">
-      <h1 class="main_title">Events And Olympiads</h1>
-      <div id="event" class="card-container">
+<script>
+// Program Data
+const programs = {
+  'digital-literacy': {
+    title: 'Digital Literacy Initiative',
+    category: 'Education',
+    status: 'Ongoing',
+    description: 'Our Digital Literacy Initiative aims to bridge the digital divide by providing comprehensive technology education to underserved communities worldwide. Through this program, we equip individuals with essential digital skills that are increasingly necessary for participation in the modern economy.',
+    longDescription: `
+      <p>The Digital Literacy Initiative was launched in 2018 to address the growing digital divide affecting rural and marginalized communities. Our program focuses on:</p>
+      <ul>
+        <li>Basic computer skills training</li>
+        <li>Internet navigation and online safety</li>
+        <li>Digital communication tools</li>
+        <li>Introduction to coding and digital creation</li>
+        <li>Technology for entrepreneurship</li>
+      </ul>
+      <p>To date, we've established 150 digital literacy centers across 25 countries, trained over 500 local instructors, and directly impacted more than 50,000 learners. Our curriculum is available in 12 languages and is continually updated to reflect evolving technology landscapes.</p>
+    `,
+    images: [
+      { url: 'https://readdy.ai/api/search-image?query=Digital%20literacy%20class%20in%20rural%20village%20with%20diverse%20participants&width=600&height=400&seq=dl1&orientation=landscape', caption: 'Digital literacy class in Kenya' },
+      { url: 'https://readdy.ai/api/search-image?query=Senior%20citizens%20learning%20computer%20skills%20in%20community%20center&width=600&height=400&seq=dl2&orientation=landscape', caption: 'Senior digital literacy program in Brazil' },
+      { url: 'https://readdy.ai/api/search-image?query=Children%20learning%20coding%20basics%20in%20school%20computer%20lab&width=600&height=400&seq=dl3&orientation=landscape', caption: 'Youth coding workshop in India' },
+      { url: 'https://readdy.ai/api/search-image?query=Mobile%20digital%20literacy%20unit%20in%20remote%20area&width=600&height=400&seq=dl4&orientation=landscape', caption: 'Mobile digital literacy unit in Mongolia' },
+      { url: 'https://readdy.ai/api/search-image?query=Graduation%20ceremony%20for%20digital%20literacy%20program%20participants&width=600&height=400&seq=dl5&orientation=landscape', caption: 'Program graduation ceremony in Ghana' },
+      { url: 'https://readdy.ai/api/search-image?query=Women%20entrepreneurs%20using%20digital%20tools%20for%20business&width=600&height=400&seq=dl6&orientation=landscape', caption: 'Digital tools for women entrepreneurs' }
+    ],
+    impact: {
+      participants: '50,000+',
+      countries: '25',
+      centers: '150',
+      satisfaction: '94%'
+    },
+    locations: ['Kenya', 'India', 'Brazil', 'Ghana', 'Vietnam', 'Indonesia', 'Colombia']
+  },
+  'green-tech': {
+    title: 'Sustainable Technology Solutions',
+    category: 'Sustainability',
+    status: '2023-2024',
+    description: 'This program focuses on implementing eco-friendly technology solutions to address environmental challenges in vulnerable communities, with a focus on renewable energy, waste management, and sustainable agriculture technologies.',
+    longDescription: `
+      <p>Our Sustainable Technology Solutions program addresses the dual challenge of environmental sustainability and economic development in vulnerable communities. Through this initiative, we:</p>
+      <ul>
+        <li>Install solar power systems in off-grid communities</li>
+        <li>Implement water purification technology</li>
+        <li>Develop waste-to-energy conversion systems</li>
+        <li>Introduce sustainable agricultural technology</li>
+        <li>Train local technicians in maintenance and repair</li>
+      </ul>
+      <p>Since its inception, the program has established 75 renewable energy installations, provided clean energy to over 15,000 people, reduced carbon emissions by an estimated 2,500 tons annually, and created 120 local green jobs.</p>
+    `,
+    images: [
+      { url: 'https://readdy.ai/api/search-image?query=Solar%20panel%20installation%20in%20rural%20village%20by%20local%20technicians&width=600&height=400&seq=gt1&orientation=landscape', caption: 'Solar installation in rural Tanzania' },
+      { url: 'https://readdy.ai/api/search-image?query=Biogas%20plant%20construction%20in%20agricultural%20community&width=600&height=400&seq=gt2&orientation=landscape', caption: 'Biogas plant construction in Nepal' },
+      { url: 'https://readdy.ai/api/search-image?query=Water%20purification%20system%20installation%20in%20remote%20community&width=600&height=400&seq=gt3&orientation=landscape', caption: 'Water purification system in Honduras' },
+      { url: 'https://readdy.ai/api/search-image?query=Training%20session%20on%20sustainable%20agriculture%20techniques&width=600&height=400&seq=gt4&orientation=landscape', caption: 'Sustainable agriculture training in Uganda' },
+      { url: 'https://readdy.ai/api/search-image?query=Community%20meeting%20about%20renewable%20energy%20project&width=600&height=400&seq=gt5&orientation=landscape', caption: 'Community consultation in Philippines' }
+    ],
+    impact: {
+      communities: '45',
+      energyProvided: '15,000+ people',
+      emissionsReduced: '2,500 tons annually',
+      jobsCreated: '120'
+    },
+    locations: ['Tanzania', 'Nepal', 'Honduras', 'Uganda', 'Philippines', 'Peru', 'Bangladesh']
+  },
+  // Additional program data would be defined here
+};
 
-         <!-- Card 5 -->
-         <div class="card">
-          <div class="card-image">
-            <img src="https://scontent.fcgp15-1.fna.fbcdn.net/v/t39.30808-6/471481671_1158164829214363_632583251002313773_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jjCiVCN8Kw4Q7kNvgE37QqE&_nc_zt=23&_nc_ht=scontent.fcgp15-1.fna&_nc_gid=AGZs3oC8JL77R8G03v-mGqC&oh=00_AYBnlCpyR6EP0PRZnmNbML-aVvtsOnLRID1wr1-AeZzYBw&oe=6777424C" alt="Event Image">
-          </div>
-          <div class="card_content"></div>
-          <div class="card-heading">ন্যাশনাল নিউজপেপার অলিম্পিয়াড (NNO)</div>
-          <div class="card-text">
-            বিভাগ: ৫ <br>
-            যোগ্যতা: ৩য় শ্রেণি থেকে মাস্টার্স <br>
-            সময়কাল: ডিসেম্বর
-          </div>
-          <p href="" class="card-button" target="_blank">Register</p>
-          </div>
-        <!-- Card 1 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="assets/images/event/bangla_oly_13.jpg" alt="Event Image">
-          </div>
-          <div class="card-heading">আন্তঃস্কুল বাংলা অলিম্পিয়াড</div>
-          <div class="card-text">
-            বিভাগ: ৫<br>
-            যোগ্যতা: স্কুলের ছাত্রছাত্রী (১০ম শ্রেণি পর্যন্ত)<br>
-            সময়কাল: ডিসেম্বর
-          </div>
-          <a href="https://www.banglaolympiad.org/" class="card-button" target="_blank">Register Now</a>
-        </div>
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Scroll Animations
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const slideElements = document.querySelectorAll('.slide-up');
+  const staggerElements = document.querySelectorAll('.stagger-fade');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  fadeElements.forEach(element => observer.observe(element));
+  slideElements.forEach(element => observer.observe(element));
+  staggerElements.forEach(element => observer.observe(element));
+
+  // Program Filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const programCards = document.querySelectorAll('.program-card');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
       
-        <!-- Card 2 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="https://bdjso.org/wp-content/uploads/2024/07/Final-01.png" alt="Event Image">
-          </div>
-          <div class="card-heading">বাংলাদেশ জুনিয়র সায়েন্স অলিম্পিয়াড (BDJSO)</div>
-          <div class="card-text">
-            বিভাগ: ৪ <br>
-            যোগ্যতা: তৃতীয় থেকে দ্বাদশ শ্রেণি <br>
-            সময়কাল: জুলাই
-          </div>
-          <a href="www.bdjso.org" class="card-button" target="_blank">Register Now</a>
-        </div>
+      // Add active class to clicked button
+      button.classList.add('active');
       
-        <!-- Card 3 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="https://scontent.fcgp15-1.fna.fbcdn.net/v/t39.30808-6/285338538_7702741646466189_8050631729318870138_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=75d36f&_nc_ohc=Ey-PVfS07BAQ7kNvgFMUafD&_nc_zt=23&_nc_ht=scontent.fcgp15-1.fna&_nc_gid=A93k9c6iNVqV8kRqNwTNZng&oh=00_AYCO4pHlHI-4vsWvnBJ5lgIXUgHfBafjJA29TZT2u7CkSw&oe=6775F431" alt="Event Image">
-          </div>
-          <div class="card_content"></div>
-          <div class="card-heading"> বাংলাদেশ অ্যাস্ট্রো অলিম্পিয়াড </div>
-          <div class="card-text">
-            বিভাগ: ২ <br>
-            যোগ্যতা: অষ্টম থেকে দ্বাদশ শ্রেণি <br>
-            সময়কাল: জুন
-          </div>
-          <p href="" class="card-button" target="_blank">Expired</p>
-          </div>
-        <!-- Card 4 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="https://bdbo.org/wp-content/uploads/2016/01/Cover_Jibbiggan_Olympiad_Sonkolon_front.jpg" alt="Event Image">
-          </div>
-          <div class="card_content"></div>
-          <div class="card-heading">বাংলাদেশ বায়োলজি অলিম্পিয়াড (BdBO)</div>
-          <div class="card-text">
-            বিভাগ: ৪ <br>
-            যোগ্যতা: তৃতীয় থেকে দ্বাদশ শ্রেণি <br>
-              সময়কাল: জানুয়ারি
-          </div>
-          <p href="" class="card-button" target="_blank">Expired</p>
-          </div>
-        <!-- Card 6 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="https://scontent.fcgp15-1.fna.fbcdn.net/v/t39.30808-6/471818401_1058382539661478_307594989339526376_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UaqK4cgIHyIQ7kNvgHnmBga&_nc_zt=23&_nc_ht=scontent.fcgp15-1.fna&_nc_gid=AwBY2Bn8qyKS4uuSCUpd4j8&oh=00_AYBcMfRhI5qtKuq5EvlIU-1gAhhM4D0_J7Ydz_5xNm2NqA&oe=67773D36" alt="Event Image">
-          </div>
-          <div class="card_content"></div>
-          <div class="card-heading">বাংলাদেশ ফিজিক্স অলিম্পিয়াড (BdPhO))</div>
-          <div class="card-text">
-            বিভাগ: ৩ <br>
-            যোগ্যতা: ষষ্ঠ থেকে দ্বাদশ শ্রেণি <br>
-            সময়কাল: জানুয়ারি
-          </div>
-          <p href="" class="card-button" target="_blank">Expired</p>
-          </div>
-        <!-- Card 7 -->
-        <div class="card">
-          <div class="card-image">
-            <img src="https://scontent.fcgp15-1.fna.fbcdn.net/v/t39.30808-6/469535863_881118754222145_2813315937402811473_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=R2m9GcrZZJ0Q7kNvgEdxPhE&_nc_zt=23&_nc_ht=scontent.fcgp15-1.fna&_nc_gid=A9oZ5TCLyzXyQ52ua41iOsL&oh=00_AYATEmxZT1_P5av3PUb3o43OuT09fXGCfRS7EZ2pnAQz_Q&oe=677725A4" alt="Event Image">
-          </div>
-          <div class="card_content"></div>
-          <div class="card-heading">বাংলাদেশ গণিত অলিম্পিয়াড (BdMO)</div>
-          <div class="card-text">
-            বিভাগ: ৪ <br>
-            যোগ্যতা: তৃতীয় থেকে দ্বাদশ শ্রেণি <br>
-            সময়কাল: জানুয়ারি
-          </div>
-          <p href="https://online.matholympiad.org.bd/?" class="card-button" target="_blank">Register</p>
-          </div>
+      const filter = button.getAttribute('data-filter');
+      
+      programCards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = 'block';
+        } else {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (categories.includes(filter)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
 
-       
+  // Program Modal
+  const modal = document.getElementById('programModal');
+  const modalContent = document.getElementById('modalContent');
+  const closeModal = document.querySelector('.close-modal');
+  const viewButtons = document.querySelectorAll('.view-program-btn');
+  
+  viewButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const programCard = e.target.closest('.program-card');
+      const programId = programCard.getAttribute('data-program');
+      openProgramModal(programId);
+    });
+  });
+  
+  programCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('view-program-btn')) {
+        const programId = card.getAttribute('data-program');
+        openProgramModal(programId);
+      }
+    });
+  });
+  
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+  
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+  
+  function openProgramModal(programId) {
+    const program = programs[programId];
+    
+    if (!program) return;
+    
+    let imagesHtml = '';
+    program.images.forEach(image => {
+      imagesHtml += `
+        <div class="gallery-item">
+          <img src="${image.url}" alt="${image.caption}">
+          <div class="gallery-caption">${image.caption}</div>
+        </div>
+      `;
+    });
+    
+    let impactHtml = '';
+    for (const [key, value] of Object.entries(program.impact)) {
+      impactHtml += `
+        <div class="stat-item">
+          <i class="ri-checkbox-circle-line"></i>
+          <span>${key}: ${value}</span>
+        </div>
+      `;
+    }
+    
+    modalContent.innerHTML = `
+      <div class="program-detail-header">
+        <span class="category-badge bg-primary/10 text-primary">${program.category}</span>
+        <h2 class="text-3xl font-bold text-gray-900 mt-4">${program.title}</h2>
+        <p class="text-gray-600 mt-2">${program.description}</p>
+        
+        <div class="program-stats">
+          ${impactHtml}
         </div>
       </div>
       
-      
-  </main>
-<!-- / card contaier -->
-<footer id="footer-placeholder"></footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main/form.js"></script>
-  <script src="assets/js/main/additional.js"></script>
-  <script src="assets/js/main/footer.js"></script>
-
+      <div class="program-detail-content">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">About This Program</h3>
+        <div class="text-gray-700">${program.longDescription}</div>
+        
+        <h3 class="text-xl font-semibold text-gray-900 mt-8 mb-4">Program Gallery</h3>
+        <div class="gallery-grid">
+          ${imagesHtml}
+        </div>
+        
+        <div class="mt-8">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Program Locations</h3>
+          <div class="flex flex-wrap gap-2">
+            ${program.locations.map(location => `
+              <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">${location}</span>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    
+    modal.style.display = 'block';
+  }
+});
+</script>
 </body>
-
 </html>
