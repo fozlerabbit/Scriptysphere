@@ -2,623 +2,766 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>home</title>
-
-
-  <meta name="description" content="ScriptySphere">
-  <meta name="keywords" content="ScriptySphere">
-  <meta name="google-adsense-account" content="ca-pub-6784982497175876">
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-6784982497175876">
+  <title>ScriptySphere - Global Technology Innovation Organization</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.1/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main/main.css">
 
-    <meta property="og:site_name" content="scriptysphere.com">
-  <meta property="og:title" content="scriptysphere">
-  <meta property="og:description"
-    content="ScriptySphere is your helpful organization, offering expert services in Olympiad hosting, chess competitions, skill development, graphic design, and more. Elevate your personality with your hard work !">
-  <meta property="og:image"
-    content="https://avatars.githubusercontent.com/u/123060177">
-  <meta property="og:type" content="website" />
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="300">
-  <meta property="og:image:height" content="300">
-  <meta property="og:url" content="https://www.scriptysphere.org">
-  <link rel="canonical" href="https://www.scriptysphere.org">
-  <meta name="description" content="ScriptySphere is your helpful organization, offering expert services in Olympiad hosting, chess competitions, digital marketing, graphic design, and more. Elevate your brand with our innovative solutions!">
-  <meta name="keywords" content="helpful organization, Olympiad hosting, chess competitions, digital marketing, graphic design, branding, social media marketing, content creation, SEO , web development,  creative agency, business growth, advertising, ScriptySphere" >
-  
-
-<link rel="shortcut icon" href="assets/images/icons/favicon.ico" type="image/x-icon">
-
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
-  <!-- <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"> -->
-  <!-- <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"> -->
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-  <!-- Main CSS File -->
-  
-  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
-  <link href="assets/css/main/additonal.css" rel="stylesheet">
-  <link href="assets/css/main/about.css" rel="stylesheet">
-  
-<!-- Google SEO-->
-  <meta name="google-site-verification" content="3wK8fvlGqfk4sU30lg1qt61RG8nbhidDCS5QyNzpiFo" />
-
-  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#0ea5e9'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body class="index-page">
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+<body class="bg-white">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">ScriptySphere</h1>
-      </a>
 
-      <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="Https://scriptysphere.com" >Home</a></li>
-            <li><a href="/about">About</a></li>
-            
-            <li><a href="/event" >Events</a></li>
-            <li><a href="/member" class="active">Member</a></li>
-          
-
-            <li class="dropdown"><a href="#"><span>Club</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Programming Club</a></li>
-                <li><a href="#">English Club</a></li>
-                <li><a href="#">Chess Club</a></li>
-                <li><a href="#">Sports Club</a></li>
-              </ul>
-            </li>
-            <li><a href="/join">Join-Us</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
+  <!-- navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="w-full px-4 sm:px-6 py-4">
+      <div class="flex items-center justify-between header-top">
+        <div class="flex items-center space-x-4 sm:space-x-8">
+          <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
+          <nav class="hidden lg:flex space-x-4 sm:space-x-8">
+            <a href="/" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+            <a href="/about.html" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+            <a href="programs.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Programs</a>
+            <a href="/blog.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Blogs</a>
+            <a href="/join.html" class="text-gray-700 hover:text-primary transition-colors font-medium">join</a>
+          </nav>
+        </div>
+        <div class="flex items-center space-x-2 sm:space-x-4">
+          <div class="hidden md:block relative search-container">
+            <input type="text" placeholder="Search..."
+              class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm w-40 md:w-48">
+            <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+              <i class="ri-search-line text-gray-400 text-sm"></i>
+            </div>
+          </div>
+          <!-- <select class="hidden sm:block border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary pr-8">
+          <option>EN</option>
+          <option>FR</option>
+          <option>ES</option>
+        </select> -->
+          <button class="hidden md:block btn btn-primary">Support Us</button>
+          <button class="lg:hidden mobile-menu-btn">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-menu-line text-xl"></i>
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
+    <!-- navbar -->
+
+    <!-- headline -->
+    <div class="bg-primary text-white py-2 overflow-hidden ticker-container">
+      <div class="news-ticker whitespace-nowrap text-sm">
+        <span class="mx-4 sm:mx-8">🌍 New partnership with Global Tech Initiative announced</span>
+        <span class="mx-4 sm:mx-8">📊 2024 Impact Report: 50+ countries reached</span>
+        <span class="mx-4 sm:mx-8">🚀 Innovation Summit 2025 registration now open</span>
+        <span class="mx-4 sm:mx-8">💡 Digital Skills Program reaches 1 million learners</span>
+      </div>
+    </div>
+
+    <!-- /headline -->
   </header>
-  <main class="main">
-    
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-      <div id="hero-carousel" data-bs-interval="3000" class=" container carousel carousel-fade" data-bs-ride="carousel">
-        
-        <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url('assets/images/gallery/picture-\(6\).avif');">
-          <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Empowering Your Digital Journey</h2>
-            <p class="animate__animated animate__fadeInUp">Step into the world of digital excellence. From strategy to execution, we create impactful solutions that drive growth and innovation.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
-        </div>
-      
-        <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url('assets/images/gallery/picture-\(3\).avif');">
-          <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Innovate, Inspire, Succeed</h2>
-            <p class="animate__animated animate__fadeInUp">Your success is our priority. Join us to unlock new digital possibilities and make your mark in the online world.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
-        </div>
-      
-          <!-- Slide 3 -->
 
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="flex justify-between items-center mb-8">
+      <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
+      <button class="mobile-menu-close">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+    </div>
 
-          <div class="carousel-item" style="background-image: url('assets/images/gallery/picture-\(10).avif');">
-            <div class="carousel-container">
-                <h2 class="animate__animated animate__fadeInDown">Transform Your Vision Into Reality</h2>
-                <p class="animate__animated animate__fadeInUp">We blend creativity with technology to bring your ideas to life. Let’s work together to build something exceptional.</p>
-                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-            </div>
-        </div>
-  
-          <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-          </a>
-  
-          <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-              <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-            </a>
-  
+    <div class="relative mb-6">
+      <input type="text" placeholder="Search..."
+        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+      <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+        <i class="ri-search-line text-gray-400 text-sm"></i>
       </div>
-      
-      <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
-          <defs>
-              <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-            </defs>
-            <g class="wave1">
-              <use xlink:href="#wave-path" x="50" y="3"></use>
-            </g>
-            <g class="wave2">
-              <use xlink:href="#wave-path" x="50" y="0"></use>
-            </g>
-            <g class="wave3">
-              <use xlink:href="#wave-path" x="50" y="9"></use>
-          </g>
-      </svg>
-  </section><!-- /Hero Section -->
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-      
-      <div class="container_for_cards" data-aos="fade-up" data-aos-delay="100">
-        <div class="row align-items-xl-start gy-5">
-          
-          <div class="col-xl-5 content">
-            <h3 >About Us</h3>
-            <h2>Who We Are </h2>
-            <p>ScriptySphere is a youth-led, purpose-driven organization committed to education, technology, and social empowerment. Born from a shared vision of a better future, we aim to shape capable, creative, and socially responsible individuals through innovation and collaborative learning.
+    <nav class="space-y-4 mb-6">
+      <a href="/" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Home</a>
+      <a href="/about.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">About</a>
+      <a href="/programs.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Programs</a>
+      <a href="/blog.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Blog</a>
+      <a href="/join.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Join</a>
+    </nav>
 
-              We believe in action with intention—every project, event, and initiative we launch is designed to spark growth, nurture leadership, and inspire impact. From tech and design to education and strategic thinking, our diverse programs help young minds realize their potential and become forces of positive change.
-              
-              Join us as we build a community where ideas thrive, skills evolve, and tomorrow’s leaders are made.</p>
-            <a href="https://scriptysphere.org/about" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-          
-          <div class="col-xl-7">
-            <div class="row gy-4 icon-boxes">
-              <!-- 1st card -->
-              <div class="col-md-6 animate__animated animate__fadeInDownBig animate__delay-1s ">
-                <div class="icon-box ">
-                  <i class="bi bi-binoculars about-icon"></i>
-                  <h3>Our Vision</h3>
-                  <p>Empowering youth to become confident, creative changemakers through innovation and skill-building.</p>
-                </div>
-              </div> <!-- End Icon Box -->
 
-                <!-- 2nd card  -->
-              <div class="col-md-6 animate__animated animate__fadeInDownBig animate__delay-2s" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box">
-                  <i class="bi bi-journal-arrow-down about-icon"></i>
-                  <h3>Our Mission</h3>
-                  <p>To create a dynamic platform for learning, competing, and growing through real-world challenges and mentorship.</p>
-                </div>
-              </div> <!-- End Icon Box -->
 
-              <!-- 3rd card  -->
-              <div class="col-md-6 animate__animated animate__fadeInDown animate__delay-3s" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box">
-                  <i class="bi bi-question-octagon about-icon"></i>
-                  <h3>What We Do</h3>
-                  <p>We host Olympiads, chess events, design challenges, and tech programs—building a community of future leaders.</p>
-                </div>
-              </div> <!-- End Icon Box -->
+    <button class="w-full btn btn-primary">Support Us</button>
+  </div>
+  <div class="mobile-nav-overlay"></div>
 
-              <!-- 4th card -->
-              <div class="col-md-6 animate__animated animate__fadeInDown animate__delay-4s" data-aos="fade-up" data-aos-delay="500" style="
-    margin: 44px 0 0 0;">
-                <div class="icon-box">
-                  <i class="bi bi-check2-square"></i>
-                  <h3>Why Choose Us</h3>
-                  <p>We combine learning with purpose—nurturing skills, creativity, and confidence in a supportive, forward-thinking environment.</p>
-                </div>
-              </div> <!-- End Icon Box -->
+  <main>
 
+    <!-- hero section -->
+    <section class="relative min-h-[80vh] sm:min-h-screen flex items-center">
+      <div id="hero-canvas" class="absolute inset-0 -z-10"></div>
+      <div class="hero-gradient"></div>
+      <div class="relative w-full px-4 sm:px-6 py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto">
+          <div class="max-w-2xl">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
+              Advancing Global Technology Innovation
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed">
+              Empowering communities worldwide through cutting-edge technology solutions, digital literacy programs, and
+              sustainable innovation initiatives that create lasting positive impact.
+            </p>
+            <div class="flex flex-wrap gap-3 sm:gap-4 hero-buttons">
+              <button class="btn btn-primary">
+                Explore Programs
+              </button>
+              <button class="btn btn-outline">
+                Our Impact
+              </button>
             </div>
           </div>
-          
         </div>
       </div>
-      
-    </section><!-- /About Section -->
-    
+    </section>
+    <!-- /hero section -->
 
-    
-    <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section dark-background">
-
-      <div class="container">
-
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-xl-9 text-center text-xl-start">
-            <h3>Join Us and Launch Your Career to New Heights!</h3>
-            <p>"Become a part of ScriptySphare, where growth has no limits, and opportunities are endless. Let’s reach new heights together—unlock your potential, expand your skills, and build a career that soars..</p>
+    <!-- Focus Areas Section -->
+    <section class="py-16 sm:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16 fade-in">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Our Focus Areas</h2>
+          <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Driving innovation across multiple domains to create sustainable solutions for global challenges
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 stagger-fade focus-area-grid">
+          <!-- Focus Area Cards -->
+          <div
+            class="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow group cursor-pointer focus-area">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors">
+              <i class="ri-code-s-slash-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Digital Innovation</h3>
+            <p class="text-gray-600 mb-3 sm:mb-4">Developing cutting-edge software solutions and digital platforms that
+              transform industries and improve lives globally.</p>
+            <button class="text-primary font-medium hover:text-blue-700 transition-colors">Learn More →</button>
           </div>
-          <div class="col-xl-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="https://scriptysphere.org/join">Join With Us </a>
+
+          <div
+            class="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow group cursor-pointer focus-area">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-secondary/20 transition-colors">
+              <i class="ri-graduation-cap-line text-2xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Education Technology</h3>
+            <p class="text-gray-600 mb-3 sm:mb-4">Bridging the digital divide through comprehensive educational programs
+              and technology literacy initiatives.</p>
+            <button class="text-secondary font-medium hover:text-sky-700 transition-colors">Learn More →</button>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow group cursor-pointer focus-area">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-green-200 transition-colors">
+              <i class="ri-leaf-line text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Sustainable Tech</h3>
+            <p class="text-gray-600 mb-3 sm:mb-4">Creating environmentally responsible technology solutions that promote
+              sustainability and climate action.</p>
+            <button class="text-green-600 font-medium hover:text-green-700 transition-colors">Learn More →</button>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow group cursor-pointer focus-area">
+            <div
+              class="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-purple-200 transition-colors">
+              <i class="ri-global-line text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Global Partnerships</h3>
+            <p class="text-gray-600 mb-3 sm:mb-4">Building strategic alliances with organizations worldwide to amplify
+              our impact and reach underserved communities.</p>
+            <button class="text-purple-600 font-medium hover:text-purple-700 transition-colors">Learn More →</button>
           </div>
         </div>
-        
       </div>
-      
-    </section><!-- /Call To Action Section -->
+    </section>
+    <!-- /Focus Areas Section -->
 
-    <!-- Sector Section -->
-    <section id="services" class="services section">
-      
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Sectors</h2>
-        <p>You Can Bright Your Future With Any Sector </p>
-      </div><!-- End Section Title -->
-      
-      <div class="container_for_cards">
-        
-        <div class="row gy-4">
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <i class="bi bi-globe" style="color: #0dcaf0;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Website Design & Development</h3>
-              </a>
-              <p>Build real websites that serve the community.
-                Learn front-end & back-end skills through team projects.
-                Improve your portfolio with hands-on work.
-                Earn certificates & recognition for your contributions.
-                Perfect for both beginners and pros.</p>
-            </div>
-          </div><!-- End Service Item -->
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-brush-fill" style="color: #fd7e14;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Graphic Design</h3>
-              </a>
-              <p>Design logos, posters, and visuals for real campaigns.
-                Grow your creativity and design skills in a team.
-                Take part in challenges and creative tasks.
-                Your work will be featured in official projects.
-                Great for building a professional design portfolio.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-camera-reels" style="color: #20c997;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Video Editor</h3>
-              </a>
-              <p>Create videos, reels, and promos for our events.
-                Work on real projects to sharpen your editing skills.
-                Collaborate with creative teams for storytelling.
-                Get credit for your work across platforms.
-                Perfect for those passionate about media and editing.</p>
-            </div>
-          </div><!-- End Service Item -->
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-keyboard" style="color: #df1529;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Copywriter</h3>
-              </a>
-              <p>Craft powerful content for events and campaigns.
-                Develop your writing style and messaging skills.
-                Write blogs, scripts, and social media posts.
-                Contribute to the voice of the organization.
-                Ideal for storytellers and aspiring writers.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-speedometer" style="color: #6610f2;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>SEO Optimizer</h3>
-              </a>
-              <p>Learn how to boost online visibility.
-                Apply SEO tools and analytics in real projects.
-                Research keywords and monitor traffic results.
-                Help our initiatives reach more people online.
-                Great for marketing-minded learners.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-graph-up-arrow" style="color: #f3268c;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Marketing Managment</h3>
-              </a>
-              <p>Plan and manage digital campaigns for projects.
-                Engage audiences through social media and trends.
-                Work in teams to promote sector activities.
-                Learn real-world marketing and leadership.
-                Shape the outreach of ScriptySphere.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-joystick" style="color: #180085;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Chess Player</h3>
-              </a>
-              <p>Join a strategic community of chess enthusiasts.
-                Play in tournaments and represent ScriptySphere.
-                Teach beginners and organize chess events.
-                Enhance your thinking and teamwork skills.
-                Open to all levels of chess lovers.</p>
-            </div>
-          </div><!-- End Service Item -->
-          
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-pc-display-horizontal" style="color: #008507;"></i>
-              </div>
-              <a href="service-details.html" class="stretched-link">
-                <h3>Ethical Hacker</h3>
-              </a>
-              <p>Learn to defend against digital threats.
-                Explore ethical hacking and simulations.
-                Work on awareness campaigns for cyber safety.
-                Gain valuable technical and problem-solving skills.
-                Great for tech-driven volunteers.</p>
-            </div>
-          </div><!-- End Service Item -->
-
+    <!-- Latest Updates Section -->
+    <section class="py-16 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Latest Updates</h2>
+          <p class="text-lg sm:text-xl text-gray-600">Stay informed about our latest initiatives and achievements</p>
         </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-fade news-grid">
+          <!-- News Cards -->
+          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow news-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=Modern%20conference%20room%20with%20diverse%20group%20of%20professionals%20collaborating%20on%20technology%20projects%2C%20clean%20bright%20environment%20with%20laptops%20and%20digital%20displays%2C%20international%20business%20meeting%20with%20people%20from%20different%20backgrounds%20working%20together%20on%20innovation&width=400&height=250&seq=news001&orientation=landscape"
+              alt="News" class="w-full h-48 object-cover">
+            <div class="p-5 sm:p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-3">
+                <span class="bg-primary text-white px-2 py-1 rounded text-xs font-medium mr-3">Partnership</span>
+                <span>December 15, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Strategic Alliance with European Innovation Hub</h3>
+              <p class="text-gray-600 mb-4">ScriptySphere announces new partnership to expand digital literacy programs
+                across 15 European countries, reaching over 500,000 learners by 2025.</p>
+              <button class="text-primary font-medium hover:text-blue-700 transition-colors">Read More →</button>
+            </div>
+          </article>
 
+          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow news-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=Young%20students%20learning%20coding%20and%20programming%20in%20modern%20computer%20lab%2C%20diverse%20children%20working%20with%20laptops%20and%20tablets%2C%20bright%20classroom%20environment%20with%20technology%20education%20setup%2C%20teacher%20helping%20students%20with%20digital%20skills&width=400&height=250&seq=news002&orientation=landscape"
+              alt="News" class="w-full h-48 object-cover">
+            <div class="p-5 sm:p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-3">
+                <span class="bg-secondary text-white px-2 py-1 rounded text-xs font-medium mr-3">Education</span>
+                <span>December 12, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Digital Skills Program Reaches Major Milestone</h3>
+              <p class="text-gray-600 mb-4">Our comprehensive digital literacy initiative has successfully trained over
+                1 million individuals across 50 countries, transforming communities through technology education.</p>
+              <button class="text-primary font-medium hover:text-blue-700 transition-colors">Read More →</button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow news-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=Sustainable%20technology%20innovation%20lab%20with%20green%20energy%20solutions%2C%20solar%20panels%20and%20wind%20turbines%20in%20background%2C%20scientists%20working%20on%20environmental%20technology%20projects%2C%20clean%20modern%20laboratory%20with%20eco-friendly%20equipment&width=400&height=250&seq=news003&orientation=landscape"
+              alt="News" class="w-full h-48 object-cover">
+            <div class="p-5 sm:p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-3">
+                <span class="bg-green-500 text-white px-2 py-1 rounded text-xs font-medium mr-3">Sustainability</span>
+                <span>December 10, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">Green Technology Initiative Launches</h3>
+              <p class="text-gray-600 mb-4">Introducing our new sustainable technology program focused on developing
+                eco-friendly solutions for climate change mitigation and environmental protection.</p>
+              <button class="text-primary font-medium hover:text-blue-700 transition-colors">Read More →</button>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-    </section><!-- /Services Section -->
+    <!-- Global Impact Section -->
+    <section class="py-16 sm:py-20 bg-primary text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Our Global Impact</h2>
+          <p class="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto">
+            Measuring success through meaningful change in communities worldwide
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 stagger-fade impact-grid">
+          <div class="text-center">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 counter" data-target="50">0</div>
+            <div class="text-lg sm:text-xl font-semibold mb-2">Countries Reached</div>
+            <p class="text-blue-100 text-sm">Active programs across six continents</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 counter" data-target="1000000">0</div>
+            <div class="text-lg sm:text-xl font-semibold mb-2">Lives Impacted</div>
+            <p class="text-blue-100 text-sm">Individuals trained and empowered</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 counter" data-target="250">0</div>
+            <div class="text-lg sm:text-xl font-semibold mb-2">Partner Organizations</div>
+            <p class="text-blue-100 text-sm">Collaborative network worldwide</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl sm:text-5xl font-bold mb-2 counter" data-target="15">0</div>
+            <div class="text-lg sm:text-xl font-semibold mb-2">Years of Innovation</div>
+            <p class="text-blue-100 text-sm">Continuous technology advancement</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Portfolio Section -->
-   
-    <!-- /Portfolio Section -->
+    <!-- Sectors Section -->
+    <section class="py-16 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Sectors We Serve</h2>
+          <p class="text-lg sm:text-xl text-gray-600">Driving innovation across diverse industries</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 stagger-fade sectors-grid">
+          <!-- Sector Cards -->
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-hospital-line text-xl sm:text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Healthcare</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">Digital health solutions and medical technology innovations</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-plant-line text-xl sm:text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Agriculture</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">Smart farming and sustainable agricultural technologies</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-bank-line text-xl sm:text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Finance</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">Fintech solutions and digital banking innovations</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-building-2-line text-xl sm:text-2xl text-orange-600"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Real Estate</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">PropTech and smart building solutions</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-car-line text-xl sm:text-2xl text-red-600"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Transportation</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">Smart mobility and logistics technology</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg transition-shadow">
+            <div
+              class="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <i class="ri-government-line text-xl sm:text-2xl text-teal-600"></i>
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2">Government</h3>
+            <p class="text-gray-600 text-xs sm:text-sm">Digital governance and smart city solutions</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>What they are saying about us</p>
-      </div><!-- End Section Title -->
-
-      <div class="container_for_cards" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-      
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
+    <section class="py-16 sm:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">What Our Partners Say</h2>
+          <p class="text-lg sm:text-xl text-gray-600">Testimonials from organizations we've worked with</p>
         </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-fade">
+          <!-- Testimonial Cards -->
+          <div class="bg-white rounded-xl p-6 sm:p-8 shadow-lg testimonial">
+            <div class="flex items-center mb-5 sm:mb-6">
 
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
-  
-
-    <!-- Faq Section -->
-    <section id="faq" class="faq section">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Frequently Asked Questions</h2>
-        <p>Frequently Asked Questions</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-12">
-            <div class="custom-accordion" id="accordion-faq">
-              <div class="accordion-item">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-faq-1">
-                    How to download and register?
-                  </button>
-                </h2>
-
-                <div id="collapse-faq-1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion-faq">
-                  <div class="accordion-body">
-                    Far far away, behind the word mountains, far from the countries
-                    Vokalia and Consonantia, there live the blind texts. Separated
-                    they live in Bookmarksgrove right at the coast of the Semantics,
-                    a large language ocean.
-                  </div>
-                </div>
-              </div>
-              <!-- .accordion-item -->
-
-              <div class="accordion-item">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-faq-2" "="">
-                How to create your paypal account?
-              </button>
-            </h2>
-            <div id=" collapse-faq-2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion-faq">
-                    <div class="accordion-body">
-                      A small river named Duden flows by their place and supplies it
-                      with the necessary regelialia. It is a paradisematic country, in
-                      which roasted parts of sentences fly into your mouth.
-                    </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Anti Child Marriage Organization's CEO</h4>
+                <p class="text-gray-500 text-xs sm:text-sm">CEO</p>
               </div>
             </div>
-            <!-- .accordion-item -->
+            <p class="text-gray-600 mb-5 sm:mb-6">"Thank you ScriptySphere for supporting us technically 💙."</p>
+            <div class="flex text-yellow-400">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+          </div>
+          <!-- /Testimonial Cards -->
 
-            <div class="accordion-item">
-              <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-faq-3">
-                  How to link your paypal and bank account?
-                </button>
-              </h2>
+          <!-- Testimonial Cards -->
+          <div class="bg-white rounded-xl p-6 sm:p-8 shadow-lg testimonial">
+            <div class="flex items-center mb-5 sm:mb-6">
 
-              <div id="collapse-faq-3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion-faq">
-                <div class="accordion-body">
-                  When she reached the first hills of the Italic Mountains, she
-                  had a last view back on the skyline of her hometown
-                  Bookmarksgrove, the headline of Alphabet Village and the subline
-                  of her own road, the Line Lane. Pityful a rethoric question ran
-                  over her cheek, then she continued her way.
-                </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Mahade Hasan Ashik</h4>
+                <p class="text-gray-500 text-xs sm:text-sm">member at World Vision Bangladesh</p>
               </div>
             </div>
-            <!-- .accordion-item -->
+            <p class="text-gray-600 mb-5 sm:mb-6">"ScriptySphere is truly amazing! They are doing incredible work by
+              utilizing specific skills to create high-quality outputs. Their contributions are not just impressive but
+              also bring positive change to our society.
+              I wholeheartedly give ScriptySphere a 5-star recommendation! If you're looking for skill-driven
+              excellence, this is the place to go! ⭐⭐⭐⭐⭐"</p>
+            <div class="flex text-yellow-400">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+          </div>
 
+          <div class="bg-white rounded-xl p-6 sm:p-8 shadow-lg testimonial">
+            <div class="flex items-center mb-5 sm:mb-6">
+
+              <div>
+                <h4 class="font-semibold text-gray-900">Abdullah Al Zabir</h4>
+                <p class="text-gray-500 text-xs sm:text-sm">Former member at ScriptySphere</p>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-5 sm:mb-6">"ScriptySphere is doing an amazing job in empowering communities
+              through meaningful initiatives. Their dedication to important causes, like women's self-defense training,
+              is truly commendable. As a new member, I'm excited to be part of this journey and contribute to their
+              impactful work. Looking forward to learning, growing, and making a difference with the team!"</p>
+            <div class="flex text-yellow-400">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Global Presence Section -->
+    <section class="py-16 sm:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Global Presence</h2>
+          <p class="text-lg sm:text-xl text-gray-600">Our programs and partnerships span across continents</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+          <div class="relative h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden"
+            style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+              <div class="bg-white/95 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">Active in 50+ Countries</h3>
+                <p class="text-gray-600 text-sm sm:text-base">From Silicon Valley to rural communities in Africa and
+                  Asia, our programs create lasting impact through technology innovation and education.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section><!-- /Faq Section -->
+    </section>
 
-    <!-- Team Section -->
-    
-    <!-- /Team Section -->
-
-    <footer id="footer-placeholder"></footer>
-
-
+    <!-- CTA Section -->
+    <section class="py-16 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 sm:p-12 text-white text-center slide-up">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Join Our Mission</h2>
+          <p class="text-lg sm:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto">
+            Be part of the global movement to democratize technology and create sustainable solutions for tomorrow's
+            challenges.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-4 cta-buttons">
+            <button class="btn bg-white text-primary hover:bg-gray-100">
+              Become a Partner
+            </button>
+            <button class="btn border-2 border-white text-white hover:bg-white hover:text-primary">
+              Support Our Work
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
- 
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10 sm:mb-12 footer-grid">
+        <div>
+          <div class="font-['Pacifico'] text-2xl text-white mb-3 sm:mb-4">ScriptySphere</div>
+          <p class="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+            Advancing global technology innovation through education, partnerships, and sustainable solutions.
+          </p>
+          <div class="flex space-x-3 sm:space-x-4">
+            <div
+              class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+              <i class="ri-twitter-line text-base sm:text-lg"></i>
+            </div>
+            <div
+              class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+              <i class="ri-linkedin-line text-base sm:text-lg"></i>
+            </div>
+            <div
+              class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+              <i class="ri-youtube-line text-base sm:text-lg"></i>
+            </div>
+            <div
+              class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+              <i class="ri-facebook-line text-base sm:text-lg"></i>
+            </div>
+          </div>
+        </div>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <div>
+          <h3 class="text-lg font-semibold mb-3 sm:mb-4">Programs</h3>
+          <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+            <li><a href="#" class="hover:text-white transition-colors">Digital Innovation</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Education Technology</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Sustainable Tech</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Global Partnerships</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Research Initiatives</a></li>
+          </ul>
+        </div>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        <div>
+          <h3 class="text-lg font-semibold mb-3 sm:mb-4">Resources</h3>
+          <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+            <li><a href="#" class="hover:text-white transition-colors">Annual Reports</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Research Papers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Media Kit</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
+          </ul>
+        </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <div>
+          <h3 class="text-lg font-semibold mb-3 sm:mb-4">Stay Connected</h3>
+          <p class="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">Subscribe to our newsletter for updates</p>
+          <div class="flex gap-2 mb-3 sm:mb-4">
+            <input type="email" placeholder="Enter your email"
+              class="flex-1 px-3 py-2 sm:px-4 sm:py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white text-sm">
+            <button
+              class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap text-sm">Subscribe</button>
+          </div>
+          <div class="flex items-center space-x-3 text-sm text-gray-400">
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-2">
+                <i class="ri-mail-line text-xs"></i>
+              </div>
+              <span>info@scriptysphere.org</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main/form.js"></script>
-  <script src="assets/js/main/additional.js"></script>
-  <script src="assets/js/main/footer.js"></script>
-  <script src="assets/js/main/nav.js"></script>
+      <div class="border-t border-gray-800 pt-6 sm:pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-xs sm:text-sm mb-3 md:mb-0">
+            © 2024 ScriptySphere. All rights reserved.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-400">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+            <div class="flex items-center space-x-2">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-shield-check-line text-xs"></i>
+              </div>
+              <span>Secure Site</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<!--ravechat-->
-  <!-- Start of REVE Chat Script-->
- <script type='text/javascript'>
- window.$_REVECHAT_API || (function(d, w) { var r = $_REVECHAT_API = function(c) {r._.push(c);}; w.__revechat_account='8035294';w.__revechat_version=2;
-   r._= []; var rc = d.createElement('script'); rc.type = 'text/javascript'; rc.async = true; rc.setAttribute('charset', 'utf-8');
-   rc.src = ('https:' == document.location.protocol ? 'https://' : 'http://')+'static.revechat.com'+'/widget/scripts/new-livechat.js?'+new Date().getTime();
-   var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(rc, s);
- })(document, window);
-</script>
-<!-- End of REVE Chat Script -->
-  
+  <script>
+    // Mobile Menu Functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const mobileMenuClose = document.querySelector('.mobile-menu-close');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const mobileOverlay = document.querySelector('.mobile-nav-overlay');
 
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function () {
+          mobileNav.classList.add('active');
+          mobileOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', function () {
+          mobileNav.classList.remove('active');
+          mobileOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', function () {
+          mobileNav.classList.remove('active');
+          mobileOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+
+      // Scroll Animations
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const slideElements = document.querySelectorAll('.slide-up');
+      const staggerElements = document.querySelectorAll('.stagger-fade');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      fadeElements.forEach(element => observer.observe(element));
+      slideElements.forEach(element => observer.observe(element));
+      staggerElements.forEach(element => observer.observe(element));
+
+      // Counter Animation
+      const counters = document.querySelectorAll('.counter');
+      const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            counter.textContent = target.toLocaleString();
+            clearInterval(timer);
+          } else {
+            counter.textContent = Math.floor(current).toLocaleString();
+          }
+        }, 16);
+      };
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      });
+
+      counters.forEach(counter => {
+        counterObserver.observe(counter);
+      });
+
+      // Three.js Animation (Optimized)
+      const container = document.getElementById('hero-canvas');
+      if (container) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        // Create geometry once
+        const geometry = new THREE.IcosahedronGeometry(1, 1);
+        const spheres = [];
+
+        for (let i = 0; i < 3; i++) {
+          const material = new THREE.MeshPhongMaterial({
+            color: 0x1e40af,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+          });
+
+          const sphere = new THREE.Mesh(geometry, material);
+          sphere.position.set(
+            Math.random() * 4 - 2,
+            Math.random() * 4 - 2,
+            Math.random() * 4 - 2
+          );
+          sphere.scale.setScalar(Math.random() * 0.5 + 0.5);
+          spheres.push(sphere);
+          scene.add(sphere);
+        }
+
+        // Lighting
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        camera.position.z = 5;
+
+        // Animation function
+        let animationFrameId;
+        function animate() {
+          animationFrameId = requestAnimationFrame(animate);
+
+          spheres.forEach((sphere, i) => {
+            sphere.rotation.x += 0.001 * (i + 1);
+            sphere.rotation.y += 0.002 * (i + 1);
+            sphere.position.y = Math.sin(Date.now() * 0.001 + i) * 0.2;
+          });
+
+          renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle resize
+        function onWindowResize() {
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize);
+
+        // Clean up on component unmount
+        container.addEventListener('cleanup', () => {
+          window.removeEventListener('resize', onWindowResize);
+          cancelAnimationFrame(animationFrameId);
+          renderer.dispose();
+          geometry.dispose();
+          spheres.forEach(sphere => sphere.material.dispose());
+        });
+      }
+    });
+
+    // Optimize performance when tab is not active
+    document.addEventListener('visibilitychange', function () {
+      const canvas = document.querySelector('#hero-canvas canvas');
+      if (canvas) {
+        if (document.visibilityState === 'hidden') {
+          canvas.style.display = 'none';
+        } else {
+          canvas.style.display = 'block';
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
