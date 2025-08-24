@@ -1,81 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-6784982497175876">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScriptySphere - Global Technology Innovation Organization</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.1/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main/main.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-6784982497175876">
-
-    <meta property="og:site_name" content="scriptysphere.com">
-  <meta property="og:title" content="scriptysphere">
-  <meta property="og:description"
-    content="ScriptySphere is your helpful organization, offering expert services in Olympiad hosting, chess competitions, skill development, graphic design, and more. Elevate your personality with your hard work !">
-  <meta property="og:image"
-    content="https://avatars.githubusercontent.com/u/123060177">
-  <meta property="og:type" content="website" />
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="300">
-  <meta property="og:image:height" content="300">
-  <meta property="og:url" content="https://www.scriptysphere.org">
-  <link rel="canonical" href="https://www.scriptysphere.org">
-  <meta name="description" content="ScriptySphere is your helpful organization, offering expert services in Olympiad hosting, chess competitions, digital marketing, graphic design, and more. Elevate your brand with our innovative solutions!">
-  <meta name="keywords" content="helpful organization, Olympiad hosting, chess competitions, digital marketing, graphic design, branding, social media marketing, content creation, SEO , web development,  creative agency, business growth, advertising, ScriptySphere" >
-  
-
-<link rel="shortcut icon" href="assets/images/icons/favicon.ico" type="image/x-icon">
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <!-- <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"> -->
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- main css -->
-    <link rel="stylesheet" href="assets/css/main/additonal.css">
-    <link rel="stylesheet" href="assets/css/main/member.css">
-    <title>Our Members </title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#0ea5e9'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-    <!-- navbar -->
-    <header id="header" class="header d-flex align-items-center fixed-top bg-black">
-      <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="sitename">ScriptySphere</h1>
-        </a>
+<body class="bg-white">
 
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="Https://scriptysphere.com" >Home</a></li>
-            <li><a href="/about">About</a></li>
-            
-            <li><a href="/event" >Events</a></li>
-            <li><a href="/member" class="active">Member</a></li>
-          
 
-            <li class="dropdown"><a href="#"><span>Club</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Programming Club</a></li>
-                <li><a href="#">English Club</a></li>
-                <li><a href="#">Chess Club</a></li>
-                <li><a href="#">Sports Club</a></li>
-              </ul>
-            </li>
-            <li><a href="/join">Join-Us</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
+  <!-- navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="w-full px-4 sm:px-6 py-4">
+      <div class="flex items-center justify-between header-top">
+        <div class="flex items-center space-x-4 sm:space-x-8">
+          <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
+          <nav class="hidden lg:flex space-x-4 sm:space-x-8">
+            <a href="/" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+            <a href="/about.html" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+            <a href="/programs.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Programs</a>
+            <a href="/member.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Members</a>
+            <a href="/blog.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Blogs</a>
+            <a href="/join.html" class="text-gray-700 hover:text-primary transition-colors font-medium">join</a>
+          </nav>
+        </div>
+        <div class="flex items-center space-x-2 sm:space-x-4">
+          <div class="hidden md:block relative search-container">
+            <input type="text" placeholder="Search..."
+              class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm w-40 md:w-48">
+            <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+              <i class="ri-search-line text-gray-400 text-sm"></i>
+            </div>
+          </div>
+          <!-- <select class="hidden sm:block border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary pr-8">
+          <option>EN</option>
+          <option>FR</option>
+          <option>ES</option>
+        </select> -->
+          <button class="hidden md:block btn btn-primary">Support Us</button>
+          <button class="lg:hidden mobile-menu-btn">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-menu-line text-xl"></i>
+            </div>
+          </button>
+        </div>
       </div>
-    </header>
+    </div>
+    <!-- navbar -->
 
- <!-- /navbar -->
+    <!-- headline -->
+    <div class="bg-primary text-white py-2 overflow-hidden ticker-container">
+      <div class="news-ticker whitespace-nowrap text-sm">
+        <span class="mx-4 sm:mx-8">🌍 New partnership with Global Tech Initiative announced</span>
+        <span class="mx-4 sm:mx-8">📊 2025 Impact Report: 50+ countries reached</span>
+        <span class="mx-4 sm:mx-8">🚀 Innovation Summit 2025 registration now open</span>
+        <span class="mx-4 sm:mx-8">💡 Digital Skills Program reaches 1 million learners</span>
+      </div>
+    </div>
+
+    <!-- /headline -->
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="flex justify-between items-center mb-8">
+      <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
+      <button class="mobile-menu-close">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+    </div>
+
+    <div class="relative mb-6">
+      <input type="text" placeholder="Search..."
+        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+      <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
+        <i class="ri-search-line text-gray-400 text-sm"></i>
+      </div>
+    </div>
+
+    <nav class="space-y-4 mb-6">
+      <a href="/" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Home</a>
+      <a href="/about.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">About</a>
+      <a href="/programs.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Programs</a>
+      <a href="/member.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Members</a>
+      <a href="/blog.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Blog</a>
+      <a href="/join.html" class="block text-gray-700 hover:text-primary transition-colors font-medium py-2">Join</a>
+    </nav>
+
+
+
+    <button class="w-full btn btn-primary">Support Us</button>
+  </div>
+  <div class="mobile-nav-overlay"></div>
+
+    
 
 
  <!-- card centent  -->
@@ -88,7 +140,6 @@
             </select>
            <select id="divisionFilter"><option value="">All Divisions</option></select>
 <select id="districtFilter"><option value="">All Districts</option></select>
-<select id="dobFilter"><option value="">All DOBs</option></select>
 
 
         </div>
