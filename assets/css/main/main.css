@@ -1,8 +1,8 @@
 
     /* Base Styles */
     :root {
-      --primary: #1e40af;
-      --secondary: #0ea5e9;
+      --primary: #009EDF;
+      --secondary: #009EDF;
     }
 
     :where([class^="ri-"])::before {
@@ -317,4 +317,8 @@
       background: var(--primary);
       color: white;
     }
- 
+ @media (max-width: 1024px) {
+  .support-btn{
+    display: none;
+  }
+ }
