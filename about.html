@@ -38,55 +38,8 @@ tailwind.config = {
 </head>
 <body class="bg-white">
  <!-- navbar -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="w-full px-4 sm:px-6 py-4">
-      <div class="flex items-center justify-between header-top">
-        <div class="flex items-center space-x-4 sm:space-x-8">
-          <div class="font-['Pacifico'] text-2xl text-primary">ScriptySphere</div>
-          <nav class="hidden lg:flex space-x-4 sm:space-x-8">
-            <a href="/" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
-            <a href="/about.html" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
-            <a href="programs.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Programs</a>
-            <a href="/blog.html" class="text-gray-700 hover:text-primary transition-colors font-medium">Blogs</a>
-            <a href="/join.html" class="text-gray-700 hover:text-primary transition-colors font-medium">join</a>
-          </nav>
-        </div>
-        <div class="flex items-center space-x-2 sm:space-x-4">
-          <div class="hidden md:block relative search-container">
-            <input type="text" placeholder="Search..."
-              class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm w-40 md:w-48">
-            <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center">
-              <i class="ri-search-line text-gray-400 text-sm"></i>
-            </div>
-          </div>
-          <!-- <select class="hidden sm:block border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary pr-8">
-          <option>EN</option>
-          <option>FR</option>
-          <option>ES</option>
-        </select> -->
-          <button class="hidden md:block btn btn-primary">Support Us</button>
-          <button class="lg:hidden mobile-menu-btn">
-            <div class="w-6 h-6 flex items-center justify-center">
-              <i class="ri-menu-line text-xl"></i>
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- navbar -->
-
-    <!-- headline -->
-    <div class="bg-primary text-white py-2 overflow-hidden ticker-container">
-      <div class="news-ticker whitespace-nowrap text-sm">
-        <span class="mx-4 sm:mx-8">🌍 New partnership with Global Tech Initiative announced</span>
-        <span class="mx-4 sm:mx-8">📊 2024 Impact Report: 50+ countries reached</span>
-        <span class="mx-4 sm:mx-8">🚀 Innovation Summit 2025 registration now open</span>
-        <span class="mx-4 sm:mx-8">💡 Digital Skills Program reaches 1 million learners</span>
-      </div>
-    </div>
-
-    <!-- /headline -->
-  </header>
+<header data-include="header"></header>
+     
 
 <main>
   <!-- Hero Section -->
@@ -351,6 +304,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
    <!-- Main JS File -->
   <script src="assets/js/main/footer.js"></script>
+  <script src="/assets/js/partials.js" type="module"></script>
+
   
 </body>
 </html>
