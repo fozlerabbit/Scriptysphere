@@ -71,7 +71,7 @@ tailwind.config = {
           </p>
         </div>
         <div class="slide-up">
-          <img src="assets/images/slider/home-slider-2.jpg" 
+          <img src="../assets/images/slider/home-slider-2.jpg" 
                alt="Our Team" class="rounded-2xl shadow-lg">
         </div>
       </div>
@@ -140,7 +140,7 @@ tailwind.config = {
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 team-grid stagger-fade">
         <div class="text-center">
-          <img src="assets/images/profile/1.png" 
+          <img src="../assets/images/profile/1.png" 
                alt="CEO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Fozle Rabbi</h3>
           <p class="text-primary font-medium mb-2">Chief Executive Officer & Founder</p>
@@ -148,7 +148,7 @@ tailwind.config = {
         </div>
         
         <div class="text-center">
-          <img src="assets/images/profile/11.png" 
+          <img src="../assets/images/profile/11.png" 
                alt="CTO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Sinan Al Sadi</h3>
           <p class="text-primary font-medium mb-2">Co-Founder</p>
@@ -156,7 +156,7 @@ tailwind.config = {
         </div>
         
         <div class="text-center">
-          <img src="assets/images/profile/0.png" 
+          <img src="../assets/images/profile/0.png" 
                alt="Education Director" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Tasrif Mallik</h3>
           <p class="text-primary font-medium mb-2">Advisor</p>
@@ -303,8 +303,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
    <!-- Main JS File -->
-  <script src="assets/js/main/footer.js"></script>
-  <script src="/assets/js/partials.js" type="module"></script>
+  <script src="../assets/js/main/footer.js"></script>
+  <script src="../assets/js/partials.js" type="module"></script>
 
   
 </body>
