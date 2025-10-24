@@ -1,0 +1,75 @@
+name: Optimize Images
+
+on:
+  push:
+    paths:
+      - 'assets/images/original/**'
+  workflow_dispatch:
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install Sharp
+        run: npm install sharp
+      
+      - name: Optimize Images
+        run: |
+          node - <<'EOF'
+          const sharp = require('sharp');
+          const fs = require('fs');
+          const path = require('path');
+          
+          const inputDir = 'assets/images/original';
+          const outputDir = 'assets/images/optimized';
+          
+          if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+          }
+          
+          const files = fs.readdirSync(inputDir);
+          
+          files.forEach(async (file) => {
+            const inputPath = path.join(inputDir, file);
+            const baseName = path.parse(file).name;
+            
+            // Generate WebP versions
+            await sharp(inputPath)
+              .resize(400)
+              .webp({ quality: 80 })
+              .toFile(path.join(outputDir, `${baseName}-400.webp`));
+            
+            await sharp(inputPath)
+              .resize(800)
+              .webp({ quality: 80 })
+              .toFile(path.join(outputDir, `${baseName}-800.webp`));
+            
+            await sharp(inputPath)
+              .resize(1200)
+              .webp({ quality: 80 })
+              .toFile(path.join(outputDir, `${baseName}-1200.webp`));
+            
+            // Generate JPEG fallback
+            await sharp(inputPath)
+              .resize(800)
+              .jpeg({ quality: 85 })
+              .toFile(path.join(outputDir, `${baseName}-800.jpg`));
+            
+            console.log(`✅ Optimized: ${file}`);
+          });
+          EOF
+      
+      - name: Commit optimized images
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add assets/images/optimized/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Optimize images"
+          git push
