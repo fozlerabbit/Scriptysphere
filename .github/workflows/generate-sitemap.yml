@@ -1,0 +1,66 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate Sitemap
+        run: |
+          cat > sitemap.xml <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://www.scriptysphere.org/</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>daily</changefreq>
+              <priority>1.0</priority>
+            </url>
+            <url>
+              <loc>https://www.scriptysphere.org/about</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+            <url>
+              <loc>https://www.scriptysphere.org/programs</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>weekly</changefreq>
+              <priority>0.9</priority>
+            </url>
+            <url>
+              <loc>https://www.scriptysphere.org/blog</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>daily</changefreq>
+              <priority>0.8</priority>
+            </url>
+            <url>
+              <loc>https://www.scriptysphere.org/member</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>weekly</changefreq>
+              <priority>0.7</priority>
+            </url>
+            <url>
+              <loc>https://www.scriptysphere.org/join</loc>
+              <lastmod>$(date +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.9</priority>
+            </url>
+          </urlset>
+          EOF
+      
+      - name: Commit sitemap
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add sitemap.xml
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update sitemap"
+          git push
